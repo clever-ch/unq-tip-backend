@@ -1,8 +1,15 @@
 package root.model;
 
-public class PublicationHistory {
+import javax.persistence.OneToOne;
+import root.utilities.Entity;
 
+@javax.persistence.Entity
+public class PublicationHistory extends Entity {
+
+	@OneToOne
 	private User user;
+	
+	@OneToOne
 	private Publication publication;
 	
 	
