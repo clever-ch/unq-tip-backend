@@ -1,14 +1,27 @@
 package root.model;
 
 import java.util.List;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToOne;
+
 import root.constants.UserProfile;
 import root.utilities.Entity;
 
+@javax.persistence.Entity
 public class User extends Entity {
+	
 	private String userName;
 	private String email;
-	private List<UserProfile> userProfiles;
+	
+	@OneToOne
 	private Account account;
+	
+	@ElementCollection
+	@Enumerated(EnumType.STRING)
+	private List<UserProfile> userProfiles;
 	
 	
 	public String getUserName() {
