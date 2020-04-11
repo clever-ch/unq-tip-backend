@@ -1,5 +1,8 @@
 package root.model;
 
-public class Publication {
+import root.utilities.Entity;
+
+@javax.persistence.Entity
+public class Publication extends Entity {
 
 }
