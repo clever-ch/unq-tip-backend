@@ -1,6 +1,5 @@
 package root.utilities;
 
-
 public abstract class Entity {
 
 	private long id;
