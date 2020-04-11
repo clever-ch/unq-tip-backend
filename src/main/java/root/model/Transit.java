@@ -1,5 +1,6 @@
 package root.model;
 
+@javax.persistence.Entity
 public class Transit extends Service {
 
 	private int transitTime;
