@@ -1,5 +1,6 @@
 package root.model;
 
+@javax.persistence.Entity
 public class Care extends Service {
 
 	private int careTime;

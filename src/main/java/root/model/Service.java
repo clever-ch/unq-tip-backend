@@ -1,15 +1,28 @@
 package root.model;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
 import root.utilities.Entity;
 
+@MappedSuperclass
 public abstract class Service extends Entity {
 	
+	@OneToOne
 	private User user;
+	
+	@Enumerated(EnumType.STRING)
 	private ServiceStatus serviceStatus;
+	
+	@OneToOne
 	private Animal animal;
+	
 	private String description;
+	
+	@Enumerated(EnumType.STRING)
 	private UnidOfTime unidOfTime;
 
 	

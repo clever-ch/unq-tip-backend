@@ -2,7 +2,6 @@ package root.model;
 import root.constants.PublicationStatus;
 import root.constants.PublicationType;
 import root.utilities.Entity;
-
 import javax.persistence.Column;
 import java.util.List;
 
@@ -135,5 +134,4 @@ public class Publication extends Entity {
     public void setPhotos(List photos) {
         this.photos = photos;
     }
-
 }
