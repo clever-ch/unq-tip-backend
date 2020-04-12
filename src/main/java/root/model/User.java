@@ -1,12 +1,10 @@
 package root.model;
 
 import java.util.List;
-
 import javax.persistence.ElementCollection;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
-
 import root.constants.UserProfile;
 import root.utilities.Entity;
 
