@@ -2,9 +2,7 @@ package root.model;
 import root.constants.PublicationStatus;
 import root.constants.PublicationType;
 import root.utilities.Entity;
-
 import javax.persistence.Column;
-import java.util.List;
 
 @javax.persistence.Entity
 public class Publication extends Entity {
@@ -30,12 +28,9 @@ public class Publication extends Entity {
     @Column(nullable=false)
     private String specification;
 
-    @Column(nullable=false)
-    private List photos;
-
     public boolean isValidPublication() {
         return !isEmptyAnimal()
-                & !isEmptyUser()
+                & hasUser()
                 & hasAType()
                 & hasAStatus()
                 & hasValidLocation()
@@ -43,32 +38,32 @@ public class Publication extends Entity {
                 & !isEmptySpecification();
     }
 
-    private boolean isEmptyAnimal() {
-        return this.animal != null;
+    public boolean isEmptyAnimal() {
+        return this.animal == null;
     }
 
-    private boolean isEmptyUser() {
+    public boolean hasUser() {
         return this.user != null;
     }
 
-    private boolean hasAType(){
+    public boolean hasAType(){
         return this.type != null;
     }
 
-    private boolean hasAStatus(){
+    public boolean hasAStatus(){
         return this.status != null;
     }
 
-    private boolean hasValidLocation() {
+    public boolean hasValidLocation() {
         return this.location != "" | this.location != null;
     }
 
-    private boolean hasValidAddress() {
+    public boolean hasValidAddress() {
         return this.address != "" | this.address != null;
     }
 
-    private boolean isEmptySpecification() {
-        return this.specification != "";
+    public boolean isEmptySpecification() {
+        return this.specification == "";
     }
 
 
@@ -126,14 +121,6 @@ public class Publication extends Entity {
 
     public void setSpecification(String specification) {
         this.specification = specification;
-    }
-
-    public List getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List photos) {
-        this.photos = photos;
     }
 
 }

@@ -2,6 +2,7 @@ package root.model;
 
 import root.utilities.Entity;
 
+@javax.persistence.Entity
 public class Account extends Entity {
 	
 	private String name;

@@ -6,7 +6,6 @@ import root.model.Animal;
 import root.model.Publication;
 import root.model.User;
 
-import java.util.List;
 
 public class PublicationFactory {
 
@@ -15,7 +14,7 @@ public class PublicationFactory {
     }
 
     public static Publication createCompletePublication(Animal animal, User user, String location, PublicationType type,
-                                                        PublicationStatus status, String address, String specification, List photos){
+                                                        PublicationStatus status, String address, String specification){
         Publication newPublication = new Publication();
         newPublication.setAnimal(animal);
         newPublication.setUser(user);
@@ -24,7 +23,6 @@ public class PublicationFactory {
         newPublication.setStatus(status);
         newPublication.setAddress(address);
         newPublication.setSpecification(specification);
-        newPublication.setPhotos(photos);
         return newPublication;
    }
 
@@ -67,12 +65,6 @@ public class PublicationFactory {
     public static Publication createPublicationWithSpecification(String specification){
         Publication newPublication = new Publication();
         newPublication.setSpecification(specification);
-        return newPublication;
-    }
-
-    public static Publication createPublicationWithPhotos(List photos){
-        Publication newPublication = new Publication();
-        newPublication.setPhotos(photos);
         return newPublication;
     }
 
