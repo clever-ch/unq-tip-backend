@@ -12,7 +12,7 @@ public class TransitFactory {
         return new Transit();
     }
 
-    public static Transit createCompleteService(User aUser, ServiceStatus aServiceStatus, Animal aAnimal, String aDescription,
+    public static Transit createCompleteTransitService(User aUser, ServiceStatus aServiceStatus, Animal aAnimal, String aDescription,
                                                 UnidOfTime aUnidOfTime, int aTransitTime){
         Transit aTransitService = new Transit();
         aTransitService.setUser(aUser);
