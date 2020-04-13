@@ -13,59 +13,59 @@ public class CareFactory {
         return new Care();
     }
 
-    public static Transit createCompleteService(User aUser, ServiceStatus aServiceStatus, Animal aAnimal, String aDescription,
-                                                UnidOfTime aUnidOfTime, int aTransitTime){
-        Transit aTransitService = new Transit();
-        aTransitService.setUser(aUser);
-        aTransitService.setServiceStatus(aServiceStatus);
-        aTransitService.setAnimal(aAnimal);
-        aTransitService.setDescription(aDescription);
-        aTransitService.setUnidOfTime(aUnidOfTime);
-        aTransitService.setTransitTime(aTransitTime);
+    public static Care createCompleteCareService(User aUser, ServiceStatus aServiceStatus, Animal aAnimal, String aDescription,
+                                                UnidOfTime aUnidOfTime, int careTime){
+        Care aCareService = new Care();
+        aCareService.setUser(aUser);
+        aCareService.setServiceStatus(aServiceStatus);
+        aCareService.setAnimal(aAnimal);
+        aCareService.setDescription(aDescription);
+        aCareService.setUnidOfTime(aUnidOfTime);
+        aCareService.setCareTime(careTime);
 
-        return aTransitService;
+        return aCareService;
     }
 
-    public static Transit createTransitServiceWithUser(User aUser){
-        Transit aTransitService = new Transit();
-        aTransitService.setUser(aUser);
+    public static Care createCareServiceWithUser(User aUser){
+        Care aCareService = new Care();
+        aCareService.setUser(aUser);
 
-        return aTransitService;
+        return aCareService;
     }
 
-    public static Transit createTransitServiceWithServiceStatus(ServiceStatus aServiceStatus){
-        Transit aTransitService = new Transit();
-        aTransitService.setServiceStatus(aServiceStatus);
+    public static Care createCareServiceWithServiceStatus(ServiceStatus aServiceStatus){
+        Care aCareService = new Care();
+        aCareService.setServiceStatus(aServiceStatus);
 
-        return aTransitService;
+        return aCareService;
     }
 
-    public static Transit createTransitServiceWithAnimal(Animal aAnimal){
-        Transit aTransitService = new Transit();
-        aTransitService.setAnimal(aAnimal);
+    public static Care createCareServiceWithAnimal(Animal aAnimal){
+        Care aCareService = new Care();
+        aCareService.setAnimal(aAnimal);
 
-        return aTransitService;
+        return aCareService;
     }
 
-    public static Transit createTransitServiceWithDescription(String aDescription){
-        Transit aTransitService = new Transit();
-        aTransitService.setDescription(aDescription);
+    public static Care createCareServiceWithDescription(String aDescription){
+        Care aCareService = new Care();
+        aCareService.setDescription(aDescription);
 
-        return aTransitService;
+        return aCareService;
     }
 
-    public static Transit createTransitServiceWithUnidOfTime(UnidOfTime aUnidOfTime){
-        Transit aTransitService = new Transit();
-        aTransitService.setUnidOfTime(aUnidOfTime);
+    public static Care createCareServiceWithUnidOfTime(UnidOfTime aUnidOfTime){
+        Care aCareService = new Care();
+        aCareService.setUnidOfTime(aUnidOfTime);
 
-        return aTransitService;
+        return aCareService;
     }
 
-    public static Transit createTransitServiceWithTransitTime(int aTransitTime){
-        Transit aTransitService = new Transit();
-        aTransitService.setTransitTime(aTransitTime);
+    public static Care createCareServiceWithCareTime(int aCareTime){
+        Care aCareService = new Care();
+        aCareService.setCareTime(aCareTime);
 
-        return aTransitService;
+        return aCareService;
     }
 
 }
