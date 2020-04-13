@@ -17,4 +17,22 @@ public class UserFactory {
 
         return newUser;
     }
+
+    public static User createAUserWithUserName(String aUserName){
+        User newUser = new User();
+        newUser.setUserName(aUserName);
+        return newUser;
+    }
+
+    public static User createAUserWithEmail(String aEmail){
+        User newUser = new User();
+        newUser.setEmail(aEmail);
+        return newUser;
+    }
+
+    public static User createAUserWithAccount(Account aAccount){
+        User newUser = new User();
+        newUser.setAccount(aAccount);
+        return newUser;
+    }
 }
