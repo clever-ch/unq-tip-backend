@@ -1,17 +1,21 @@
 package root.model;
+
 import root.constants.PublicationStatus;
 import root.constants.PublicationType;
 import root.utilities.Entity;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.OneToOne;
+
 import java.util.List;
 
 @javax.persistence.Entity
 public class Publication extends Entity {
 
-    @Column(nullable=false)
+	@OneToOne
     private Animal animal;
 
-    @Column(nullable=false)
+	@OneToOne
     private User user;
 
     @Column(nullable=false)
@@ -30,7 +34,8 @@ public class Publication extends Entity {
     private String specification;
 
     @Column(nullable=false)
-    private List photos;
+    @ElementCollection
+    private List<String> photos;
 
     public boolean isValidPublication() {
         return !isEmptyAnimal()
@@ -127,11 +132,11 @@ public class Publication extends Entity {
         this.specification = specification;
     }
 
-    public List getPhotos() {
+    public List<String> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(List photos) {
+    public void setPhotos(List<String> photos) {
         this.photos = photos;
     }
 }
