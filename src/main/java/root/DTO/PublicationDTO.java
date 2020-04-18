@@ -9,6 +9,7 @@ public class PublicationDTO {
 	public String Size;
 	public String Age;
 	public String Description;
+	public int AnimalType;
 
 	public String UserName;
 	public String Email;
