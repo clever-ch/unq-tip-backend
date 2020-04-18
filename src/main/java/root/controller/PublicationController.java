@@ -41,13 +41,14 @@ public class PublicationController {
 		publicationDTO.Size = publication.getAnimal().getSize();
 		publicationDTO.Age = publication.getAnimal().getAge();
 		publicationDTO.Description = publication.getAnimal().getDescription();
+		publicationDTO.AnimalType = publication.getAnimal().getAnimalType().ordinal();
 		
 		publicationDTO.UserName = publication.getUser().getUserName();
 		publicationDTO.Email = publication.getUser().getEmail();
 		
 		publicationDTO.Location = publication.getLocation();
-		publicationDTO.PublicationType = publication.getType().ordinal();
-		publicationDTO.PublicationStatus = publication.getStatus().ordinal();
+		publicationDTO.PublicationType = publication.getPublicationType().ordinal();
+		publicationDTO.PublicationStatus = publication.getPublicationStatus().ordinal();
 		publicationDTO.Adrees = publication.getAddress();
 		publicationDTO.Specification = publication.getSpecification();
 		publicationDTO.Photos = publication.getPhotos();
