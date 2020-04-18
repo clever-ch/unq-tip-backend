@@ -22,10 +22,10 @@ public class Publication extends Entity {
     private String location;
 
     @Column(nullable=false)
-    private PublicationType type;
+    private PublicationType publicationType;
 
     @Column(nullable=false)
-    private PublicationStatus status;
+    private PublicationStatus publicationStatus;
 
     @Column(nullable=false)
     private String address;
@@ -40,8 +40,8 @@ public class Publication extends Entity {
     public boolean isValidPublication() {
         return !isEmptyAnimal()
                 & !isEmptyUser()
-                & hasAType()
-                & hasAStatus()
+                & hasAPublicationType()
+                & hasAPublicationStatus()
                 & hasValidLocation()
                 & hasValidAddress()
                 & !isEmptySpecification();
@@ -55,12 +55,12 @@ public class Publication extends Entity {
         return this.user != null;
     }
 
-    private boolean hasAType(){
-        return this.type != null;
+    private boolean hasAPublicationType(){
+        return this.publicationType != null;
     }
 
-    private boolean hasAStatus(){
-        return this.status != null;
+    private boolean hasAPublicationStatus(){
+        return this.publicationStatus != null;
     }
 
     private boolean hasValidLocation() {
@@ -100,20 +100,20 @@ public class Publication extends Entity {
         this.location = location;
     }
 
-    public PublicationType getType() {
-        return type;
+    public PublicationType getPublicationType() {
+        return publicationType;
     }
 
-    public void setType(PublicationType type) {
-        this.type = type;
+    public void setPublicationType(PublicationType type) {
+        this.publicationType = type;
     }
 
-    public PublicationStatus getStatus() {
-        return status;
+    public PublicationStatus getPublicationStatus() {
+        return publicationStatus;
     }
 
-    public void setStatus(PublicationStatus status) {
-        this.status = status;
+    public void setPublicationStatus(PublicationStatus status) {
+        this.publicationStatus = status;
     }
 
     public String getAddress() {
