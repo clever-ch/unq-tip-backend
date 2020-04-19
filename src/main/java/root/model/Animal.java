@@ -8,7 +8,7 @@ import root.utilities.Entity;
 @javax.persistence.Entity
 public class Animal extends Entity {
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	private AnimalType animalType;
 	private String age;
 	private String breed;
