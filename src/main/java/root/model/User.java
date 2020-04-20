@@ -1,18 +1,16 @@
 package root.model;
 
 import javax.persistence.OneToOne;
-
 import root.utilities.Entity;
 
 @javax.persistence.Entity
 public class User extends Entity {
 	
-	private String userName;
 	private String email;
+	private String userName;
 	
 	@OneToOne
 	private Account account;
-
 	
 	public String getUserName() {
 		return userName;

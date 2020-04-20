@@ -1,26 +1,31 @@
 package root.model;
+
 import root.constants.PublicationStatus;
 import root.constants.PublicationType;
 import root.utilities.Entity;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.OneToOne;
+
+import java.util.List;
 
 @javax.persistence.Entity
 public class Publication extends Entity {
 
-    @Column(nullable=false)
+	@OneToOne
     private Animal animal;
 
-    @Column(nullable=false)
+	@OneToOne
     private User user;
 
     @Column(nullable=false)
     private String location;
 
     @Column(nullable=false)
-    private PublicationType type;
+    private PublicationType publicationType;
 
     @Column(nullable=false)
-    private PublicationStatus status;
+    private PublicationStatus publicationStatus;
 
     @Column(nullable=false)
     private String address;
@@ -28,11 +33,15 @@ public class Publication extends Entity {
     @Column(nullable=false)
     private String specification;
 
+    @Column(nullable=false)
+    @ElementCollection
+    private List<String> photos;
+
     public boolean isValidPublication() {
         return !isEmptyAnimal()
-                & hasUser()
-                & hasAType()
-                & hasAStatus()
+                & !isEmptyUser()
+                & hasAPublicationType()
+                & hasAPublicationStatus()
                 & hasValidLocation()
                 & hasValidAddress()
                 & !isEmptySpecification();
@@ -42,16 +51,16 @@ public class Publication extends Entity {
         return this.animal == null;
     }
 
-    public boolean hasUser() {
+    public boolean isEmptyUser() {
         return this.user != null;
     }
 
-    public boolean hasAType(){
-        return this.type != null;
+    public boolean hasAPublicationType(){
+        return this.publicationType != null;
     }
 
-    public boolean hasAStatus(){
-        return this.status != null;
+    public boolean hasAPublicationStatus(){
+        return this.publicationStatus != null;
     }
 
     public boolean hasValidLocation() {
@@ -91,20 +100,20 @@ public class Publication extends Entity {
         this.location = location;
     }
 
-    public PublicationType getType() {
-        return type;
+    public PublicationType getPublicationType() {
+        return publicationType;
     }
 
-    public void setType(PublicationType type) {
-        this.type = type;
+    public void setPublicationType(PublicationType type) {
+        this.publicationType = type;
     }
 
-    public PublicationStatus getStatus() {
-        return status;
+    public PublicationStatus getPublicationStatus() {
+        return publicationStatus;
     }
 
-    public void setStatus(PublicationStatus status) {
-        this.status = status;
+    public void setPublicationStatus(PublicationStatus status) {
+        this.publicationStatus = status;
     }
 
     public String getAddress() {
@@ -123,4 +132,11 @@ public class Publication extends Entity {
         this.specification = specification;
     }
 
+    public List<String> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<String> photos) {
+        this.photos = photos;
+    }
 }

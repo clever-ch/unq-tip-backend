@@ -1,12 +1,12 @@
 package model;
 
-import model.factories.DogFactory;
+import model.factories.AnimalFactory;
 import model.factories.TransitFactory;
 import model.factories.UserFactory;
 import org.junit.Test;
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
-import root.model.Dog;
+import root.model.Animal;
 import root.model.Transit;
 import root.model.User;
 
@@ -39,7 +39,7 @@ public class TestTransitService {
     @Test
     public void testTransitServiceHasAnimal(){
 
-        final Dog TRANSIT_ANIMAL = DogFactory.anyDog();
+        final Animal TRANSIT_ANIMAL = AnimalFactory.anyAnimal();
 
         Transit aTransit = TransitFactory.createTransitServiceWithAnimal(TRANSIT_ANIMAL);
 
