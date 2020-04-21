@@ -1,7 +1,6 @@
 package model;
 
 import model.factories.AccountFactory;
-import model.factories.UserFactory;
 import org.junit.Test;
 import root.model.Account;
 
