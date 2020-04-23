@@ -13,6 +13,10 @@ public class PublicationDTO {
 
 	public String UserName;
 	public String Email;
+	
+	public String AccountName;
+	public String AccountSurName;
+	public String AccountTelephone;
 
 	public String Location;
 	public int PublicationType;
