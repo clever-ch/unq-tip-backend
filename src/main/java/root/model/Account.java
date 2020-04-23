@@ -5,11 +5,11 @@ import root.utilities.Entity;
 @javax.persistence.Entity
 public class Account extends Entity {
 	
+	private String address;
+	private String location;
 	private String name;
 	private String surName;
 	private String telephone;
-	private String address;
-	private String location;
 	
 	
 	public String getName() {

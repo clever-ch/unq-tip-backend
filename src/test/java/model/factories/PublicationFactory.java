@@ -19,8 +19,8 @@ public class PublicationFactory {
         newPublication.setAnimal(animal);
         newPublication.setUser(user);
         newPublication.setLocation(location);
-        newPublication.setType(type);
-        newPublication.setStatus(status);
+        newPublication.setPublicationType(type);
+        newPublication.setPublicationStatus(status);
         newPublication.setAddress(address);
         newPublication.setSpecification(specification);
         return newPublication;
@@ -40,7 +40,7 @@ public class PublicationFactory {
 
     public static Publication createPublicationWithType(PublicationType type){
         Publication newPublication = new Publication();
-        newPublication.setType(type);
+        newPublication.setPublicationType(type);
         return newPublication;
     }
 
@@ -52,7 +52,7 @@ public class PublicationFactory {
 
     public static Publication createPublicationWithStatus(PublicationStatus status){
         Publication newPublication = new Publication();
-        newPublication.setStatus(status);
+        newPublication.setPublicationStatus(status);
         return newPublication;
     }
 

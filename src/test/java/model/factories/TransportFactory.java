@@ -3,7 +3,6 @@ package model.factories;
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
 import root.model.Animal;
-import root.model.Transit;
 import root.model.Transport;
 import root.model.User;
 

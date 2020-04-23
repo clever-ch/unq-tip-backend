@@ -4,7 +4,6 @@ import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
 import root.model.Animal;
 import root.model.Care;
-import root.model.Transit;
 import root.model.User;
 
 public class CareFactory {
