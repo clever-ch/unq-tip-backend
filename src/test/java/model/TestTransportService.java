@@ -1,11 +1,12 @@
 package model;
 
-import model.factories.TransitFactory;
+import model.factories.AnimalFactory;
 import model.factories.TransportFactory;
 import model.factories.UserFactory;
 import org.junit.Test;
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
+import root.model.Animal;
 import root.model.Transport;
 import root.model.User;
 import static org.junit.Assert.assertEquals;
@@ -32,9 +33,18 @@ public class TestTransportService {
         Transport aTransport = TransportFactory.createTransportServiceWithServiceStatus(TRANSPORT_SERVICESTATUS);
 
         assertEquals(aTransport.getServiceStatus(), TRANSPORT_SERVICESTATUS);
-
     }
 
+    @Test
+    public void testTransportServiceHasAnimal(){
+
+        final Animal TRANSPORT_ANIMAL = AnimalFactory.anyAnimal();
+
+        Transport aTransport = TransportFactory.createTransportServiceWithAnimal(TRANSPORT_ANIMAL);
+
+        assertEquals(aTransport.getAnimal(), TRANSPORT_ANIMAL);
+
+    }
 
     @Test
     public void testTransportServiceHasDescription(){
@@ -54,7 +64,6 @@ public class TestTransportService {
         Transport aTransport = TransportFactory.createTransportServiceWithUnidOfTime(TRANSPORT_UNIDOFTIME);
 
         assertEquals(aTransport.getUnidOfTime(), TRANSPORT_UNIDOFTIME);
-
     }
 
     @Test
@@ -65,7 +74,6 @@ public class TestTransportService {
         Transport aTransport = TransportFactory.createTransportServiceWithTransitTime(TRANSPORT_TIME);
 
         assertEquals(aTransport.getScheduleAvailable(), TRANSPORT_TIME);
-
     }
 
 }

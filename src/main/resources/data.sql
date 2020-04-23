@@ -17,3 +17,4 @@ insert into Animal values (3,'5 meses', 0, 'Pato', 'Pato común, todo blanco, pa
 --Sección Publications
 insert into Publication values (1, 'Bernal - Maipú 327', 'location1', 0, 0, 'Se lo vió por última vez en eso alrededores', 1, 1);
 insert into Publication values (2, 'Berazategui - Av. Mitre', 'location2', 0, 1, 'Se la vió por última vez cerca de la UAI', 2, 2);
+

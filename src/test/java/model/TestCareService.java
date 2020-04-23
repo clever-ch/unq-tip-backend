@@ -5,7 +5,6 @@ import model.factories.CareFactory;
 import model.factories.TransportFactory;
 import model.factories.UserFactory;
 import org.junit.Test;
-import root.constants.AnimalType;
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
 import root.model.Animal;
@@ -36,6 +35,16 @@ public class TestCareService {
         Care aCare = CareFactory.createCareServiceWithServiceStatus(CARE_SERVICESTATUS);
 
         assertEquals(aCare.getServiceStatus(), CARE_SERVICESTATUS);
+    }
+
+    @Test
+    public void testTransportServiceHasAnimal(){
+
+        final Animal CARE_ANIMAL = AnimalFactory.anyAnimal();
+
+        Transport aTransport = TransportFactory.createTransportServiceWithAnimal(CARE_ANIMAL);
+
+        assertEquals(aTransport.getAnimal(), CARE_ANIMAL);
     }
     
 
