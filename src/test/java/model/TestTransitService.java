@@ -1,16 +1,14 @@
 package model;
 
-import model.factories.DogFactory;
 import model.factories.TransitFactory;
 import model.factories.UserFactory;
 import org.junit.Test;
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
-import root.model.Dog;
 import root.model.Transit;
 import root.model.User;
-
 import static org.junit.Assert.assertEquals;
+
 
 public class TestTransitService {
 
@@ -36,16 +34,6 @@ public class TestTransitService {
 
     }
 
-    @Test
-    public void testTransitServiceHasAnimal(){
-
-        final Dog TRANSIT_ANIMAL = DogFactory.anyDog();
-
-        Transit aTransit = TransitFactory.createTransitServiceWithAnimal(TRANSIT_ANIMAL);
-
-        assertEquals(aTransit.getAnimal(), TRANSIT_ANIMAL);
-
-    }
 
     @Test
     public void testTransitServiceHasDescription(){
