@@ -46,6 +46,10 @@ public class PublicationController {
 		publicationDTO.UserName = publication.getUser().getUserName();
 		publicationDTO.Email = publication.getUser().getEmail();
 		
+		publicationDTO.AccountName = publication.getUser().getAccount().getName();
+		publicationDTO.AccountSurName = publication.getUser().getAccount().getSurName();
+		publicationDTO.AccountTelephone = publication.getUser().getAccount().getTelephone();
+		
 		publicationDTO.Location = publication.getLocation();
 		publicationDTO.PublicationType = publication.getPublicationType().ordinal();
 		publicationDTO.PublicationStatus = publication.getPublicationStatus().ordinal();
