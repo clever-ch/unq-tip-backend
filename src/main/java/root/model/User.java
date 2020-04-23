@@ -11,7 +11,7 @@ public class User extends Entity {
 	
 	@OneToOne
 	private Account account;
-	
+
 	
 	public String getUserName() {
 		return userName;
@@ -32,4 +32,5 @@ public class User extends Entity {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+
 }

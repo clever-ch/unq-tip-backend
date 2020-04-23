@@ -6,7 +6,6 @@ import root.utilities.Entity;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.OneToOne;
-
 import java.util.List;
 
 @javax.persistence.Entity
@@ -47,11 +46,11 @@ public class Publication extends Entity {
                 & !isEmptySpecification();
     }
 
-    private boolean isEmptyAnimal() {
-        return this.animal != null;
+    public boolean isEmptyAnimal() {
+        return this.animal == null;
     }
 
-    private boolean isEmptyUser() {
+    public boolean isEmptyUser() {
         return this.user != null;
     }
 
@@ -63,18 +62,17 @@ public class Publication extends Entity {
         return this.publicationStatus != null;
     }
 
-    private boolean hasValidLocation() {
+    public boolean hasValidLocation() {
         return this.location != "" | this.location != null;
     }
 
-    private boolean hasValidAddress() {
+    public boolean hasValidAddress() {
         return this.address != "" | this.address != null;
     }
 
-    private boolean isEmptySpecification() {
-        return this.specification != "";
+    public boolean isEmptySpecification() {
+        return this.specification == "";
     }
-
 
     public Animal getAnimal() {
         return animal;
