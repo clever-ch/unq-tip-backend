@@ -54,11 +54,11 @@ public class Publication extends Entity {
         return this.user != null;
     }
 
-    private boolean hasAPublicationType(){
+    public boolean hasAPublicationType(){
         return this.publicationType != null;
     }
 
-    private boolean hasAPublicationStatus(){
+    public boolean hasAPublicationStatus(){
         return this.publicationStatus != null;
     }
 
