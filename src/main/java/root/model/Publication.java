@@ -51,7 +51,7 @@ public class Publication extends Entity {
     }
 
     public boolean isEmptyUser() {
-        return this.user != null;
+        return this.user == null;
     }
 
     public boolean hasAPublicationType(){
