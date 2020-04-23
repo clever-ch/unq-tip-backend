@@ -17,3 +17,4 @@ insert into Animal values (3,'edadPajaro1', 0, 'razaPajaro1', 'descriptionPajaro
 --Sección Publications
 insert into Publication values (1, 'address1', 'location1', 0, 0, 'specification1', 1, 1);
 insert into Publication values (2, 'address2', 'location2', 0, 1, 'specification2', 2, 2);
+
