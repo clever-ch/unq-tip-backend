@@ -41,8 +41,6 @@ public class TestPublication {
 
         Publication aPublication = PublicationFactory.createPublicationWithUser(aUser);
 
-        assertTrue(aPublication.isEmptyUser());
-
         assertFalse(aPublication.isEmptyUser());
     }
     
