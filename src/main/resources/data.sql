@@ -9,12 +9,22 @@ insert into User values (2, 'emailUser2@gmail.com', 'PGonzales01', 2);
 
 
 --Sección Animals
-insert into Animal values (1,'3 meses', 1, 'Siames', 'Gato macho, collar rojo, ojos azules y manchas marrones', 'alto 20cm x 30cm ancho');
+insert into Animal values (1,'3 meses', 1, 'Mestizo', 'Gatito macho, blanco y negro. Ojos amarillos', 'alto 20cm x 30cm ancho');
 insert into Animal values (2,'2 meses', 2, 'Coquer', 'Cachorra coquer, sin collar, pelo marrón y ojos negros', 'alto 15cm x 20cm ancho');
 insert into Animal values (3,'5 meses', 0, 'Pato', 'Pato común, todo blanco, patas naranjas', 'aproximadamente Alto 40cm');
 
 
 --Sección Publications
-insert into Publication values (1, 'Bernal - Maipú 327', 'location1', 0, 0, 'Se lo vió por última vez en eso alrededores', 1, 1);
-insert into Publication values (2, 'Berazategui - Av. Mitre', 'location2', 0, 1, 'Se la vió por última vez cerca de la UAI', 2, 2);
+insert into Publication values (1, 'location1', 'Bernal - Maipú 327', 'Se lo vió por última vez en esos alrededores', 0, 0, 1, 1);
+insert into Publication values (2, 'location2', 'Berazategui - Av. Mitre', 'Se la vió por última vez cerca de la UAI', 0, 1, 2, 2);
+
+
+--Sección tabla intermedia PUBLICATION_PHOTOS
+insert into PUBLICATION_PHOTOS values (1, 'https://www.elmundodelgato.com/fotos/78/1219_P1211772.JPG');
+insert into PUBLICATION_PHOTOS values (1, 'https://s3-eu-west-1.amazonaws.com/barkibu-blog/blog+images/como-saber-que-raza-es-mi-gato/gato-tuxis2.png');
+insert into PUBLICATION_PHOTOS values (1, 'https://i.pinimg.com/originals/2e/95/13/2e9513de4ee17692a1f78985b139d1f4.jpg');
+
+insert into PUBLICATION_PHOTOS values (2, 'https://misanimales.com/wp-content/uploads/2015/12/cocker-spaniel-americano.jpg');
+insert into PUBLICATION_PHOTOS values (2, 'https://3.bp.blogspot.com/-yb6LhqETeMw/UUUSiFQjZMI/AAAAAAAAAB4/rwxx--e21bo/s1600/cachorra+cocker.jpg');
+
 
