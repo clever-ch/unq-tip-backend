@@ -21,8 +21,8 @@ public class PublicationFactory {
         newPublication.setLocation(location);
         newPublication.setPublicationType(type);
         newPublication.setPublicationStatus(status);
-        newPublication.setAddress(address);
-        newPublication.setSpecification(specification);
+        newPublication.setPublicationAddress(address);
+        newPublication.setPublicationDescription(specification);
         return newPublication;
    }
 
@@ -58,13 +58,13 @@ public class PublicationFactory {
 
     public static Publication createPublicationWithAddress(String address){
         Publication newPublication = new Publication();
-        newPublication.setAddress(address);
+        newPublication.setPublicationAddress(address);
         return newPublication;
     }
 
     public static Publication createPublicationWithSpecification(String specification){
         Publication newPublication = new Publication();
-        newPublication.setSpecification(specification);
+        newPublication.setPublicationDescription(specification);
         return newPublication;
     }
 
