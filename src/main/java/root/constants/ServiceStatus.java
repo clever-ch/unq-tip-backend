@@ -1,7 +1,6 @@
 package root.constants;
 
-public enum ServiceStatus {
-	
+public enum ServiceStatus {	
 	Active,
 	Inactive
 }
