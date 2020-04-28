@@ -97,4 +97,20 @@ public class PublicationController {
 		
 		return publicationsDTO;
 	}
+	
+	@GetMapping("/allPublicationsLost")
+	public List<PublicationDTO> getAllPublicationsLost() {
+		
+		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
+		List<Publication> publications = publicationRepository.findAll();
+		
+		for (Publication publication : publications) {
+			
+			if (publication.getPublicationType().equals(PublicationType.LOST)) {
+				publicationsDTO.add(ConvertPublicationToPublicationDTO(publication));
+			}			
+		}
+		
+		return publicationsDTO;
+	}
 }
