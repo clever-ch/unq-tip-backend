@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import root.DTO.AnimalDTO;
 import root.DTO.PublicationDTO;
 import root.DTO.UserDTO;
+import root.constants.PublicationType;
 import root.model.Publication;
 import root.repository.PublicationRepository;
 
@@ -78,5 +79,22 @@ public class PublicationController {
 		userDTO.AccountAddress = publication.getUser().getAccount().getAddress();
 		
 		return userDTO;
+	}
+
+	
+	@GetMapping("/allPublicationsFound")
+	public List<PublicationDTO> getAllPublicationsFound() {
+		
+		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
+		List<Publication> publications = publicationRepository.findAll();
+		
+		for (Publication publication : publications) {
+			
+			if (publication.getPublicationType().equals(PublicationType.FOUND)) {
+				publicationsDTO.add(ConvertPublicationToPublicationDTO(publication));
+			}			
+		}
+		
+		return publicationsDTO;
 	}
 }
