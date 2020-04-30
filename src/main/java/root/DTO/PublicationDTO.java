@@ -1,27 +1,22 @@
 package root.DTO;
 
 import java.util.List;
+import root.constants.PublicationType;
+import root.constants.PublicationStatus;
+
 
 public class PublicationDTO {
 
 	public long Id;
-	public String Breed;
-	public String Size;
-	public String Age;
-	public String Description;
-	public int AnimalType;
-
-	public String UserName;
-	public String Email;
 	
-	public String AccountName;
-	public String AccountSurName;
-	public String AccountTelephone;
+	public AnimalDTO AnimalDTO;
+	public UserDTO UserDTO;
+	
+	public String PublicationAddress;
+	public String PublicationLocation;
+	public PublicationType PublicationType;
+	public PublicationStatus PublicationStatus;
+	public String PublicationDescription;
 
-	public String Location;
-	public int PublicationType;
-	public int PublicationStatus;
-	public String Adrees;
-	public String Specification;
 	public List<String> Photos;
 }

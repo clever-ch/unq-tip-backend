@@ -27,10 +27,10 @@ public class Publication extends Entity {
     private PublicationStatus publicationStatus;
 
     @Column(nullable=false)
-    private String address;
+    private String publicationAddress;
 
     @Column(nullable=false)
-    private String specification;
+    private String publicationDescription;
 
     @Column(nullable=false)
     @ElementCollection
@@ -42,8 +42,8 @@ public class Publication extends Entity {
                 & hasAPublicationType()
                 & hasAPublicationStatus()
                 & hasValidLocation()
-                & hasValidAddress()
-                & !isEmptySpecification();
+                & hasValidPublicationAddress()
+                & !isEmptyPublicationDescription();
     }
 
     public boolean isEmptyAnimal() {
@@ -66,12 +66,12 @@ public class Publication extends Entity {
         return this.location != "" | this.location != null;
     }
 
-    public boolean hasValidAddress() {
-        return this.address != "" | this.address != null;
+    public boolean hasValidPublicationAddress() {
+        return this.publicationAddress != "" | this.publicationAddress != null;
     }
 
-    public boolean isEmptySpecification() {
-        return this.specification == "";
+    public boolean isEmptyPublicationDescription() {
+        return this.publicationDescription == "";
     }
 
     public Animal getAnimal() {
@@ -114,20 +114,21 @@ public class Publication extends Entity {
         this.publicationStatus = status;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPublicationAddress() {
+        return publicationAddress;
+
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPublicationAddress(String address) {
+        this.publicationAddress = address;
     }
 
-    public String getSpecification() {
-        return specification;
+    public String getPublicationDescription() {
+        return publicationDescription;
     }
 
-    public void setSpecification(String specification) {
-        this.specification = specification;
+    public void setPublicationDescription(String publicationDescription) {
+        this.publicationDescription = publicationDescription;
     }
 
     public List<String> getPhotos() {

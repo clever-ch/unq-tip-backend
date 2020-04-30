@@ -76,13 +76,13 @@ public class TestPublication {
     public void hasValidAddress(){
         Publication aPublication = PublicationFactory.createPublicationWithAddress("Mitre");
 
-        assertTrue(aPublication.hasValidAddress());
+        assertTrue(aPublication.hasValidPublicationAddress());
     }
 
     @Test
     public void testIsNotEmptyEspecification(){
         Publication aPublication = PublicationFactory.createPublicationWithSpecification("Esto es una especificacion");
 
-        assertFalse(aPublication.isEmptySpecification());
+        assertFalse(aPublication.isEmptyPublicationDescription());
     }
 }
