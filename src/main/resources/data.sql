@@ -2,6 +2,7 @@
 insert into Account values (1, 'andres baranda 625', 'Quilmes', 'Pepe', 'Perez', '011-2222-3333');
 insert into Account values (2, 'Maipú 444', 'Bernal', 'Pato', 'Gonzales', '011-3333-4444');
 
+
 insert into Account values (3, 'Av. Mitre', 'Quilmes', 'Juan', 'Garcia', '011-3333-4444');
 insert into Account values (4, 'Av Cordoba', 'Capital Federal', 'Pedro', 'Gomez', '011-3333-4444');
 insert into Account values (5, 'Calle 44', 'Tigre', 'Luis', 'Galvez', '011-3333-4444');

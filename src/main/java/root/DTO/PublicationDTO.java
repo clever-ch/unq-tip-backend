@@ -4,6 +4,7 @@ import java.util.List;
 import root.constants.PublicationType;
 import root.constants.PublicationStatus;
 
+
 public class PublicationDTO {
 
 	public long Id;
@@ -16,5 +17,6 @@ public class PublicationDTO {
 	public PublicationType PublicationType;
 	public PublicationStatus PublicationStatus;
 	public String PublicationDescription;
+
 	public List<String> Photos;
 }

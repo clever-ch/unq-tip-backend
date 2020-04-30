@@ -36,6 +36,10 @@ public class Publication extends Entity {
     @ElementCollection
     private List<String> photos;
 
+    @Column(nullable=false)
+    @ElementCollection
+    private List<String> photos;
+
     public boolean isValidPublication() {
         return !isEmptyAnimal()
                 & !isEmptyUser()
@@ -116,6 +120,7 @@ public class Publication extends Entity {
 
     public String getPublicationAddress() {
         return publicationAddress;
+
     }
 
     public void setPublicationAddress(String address) {
