@@ -1,6 +1,7 @@
 --Sección Accounts
 insert into Account values (1, 'andres baranda 625', 'Quilmes', 'Pepe', 'Perez', '011-2222-3333');
 insert into Account values (2, 'Maipú 444', 'Bernal', 'Pato', 'Gonzales', '011-3333-4444');
+
 insert into Account values (3, 'Av. Mitre', 'Quilmes', 'Juan', 'Garcia', '011-3333-4444');
 insert into Account values (4, 'Av Cordoba', 'Capital Federal', 'Pedro', 'Gomez', '011-3333-4444');
 insert into Account values (5, 'Calle 44', 'Tigre', 'Luis', 'Galvez', '011-3333-4444');
@@ -9,6 +10,7 @@ insert into Account values (6, 'Ramon Franco', 'Avellaneda', 'Roberto', 'Smith',
 --Sección Users
 insert into User values (1, 'emailUser1@gmail.com', 'PepePer01', 1);
 insert into User values (2, 'emailUser2@gmail.com', 'PGonzales01', 2);
+
 insert into User values (3, 'emailUser3@gmail.com', 'JGarcia01', 3);
 insert into User values (4, 'emailUser4@gmail.com', 'PGomez01', 4);
 insert into User values (5, 'emailUser5@gmail.com', 'LuisGonzales01', 5);
@@ -25,18 +27,19 @@ insert into Animal values (7,'3 años', 0, 'Guacamayo', 'Color amarillo y celest
 
 
 --Sección Publications
-insert into Publication values (1, 'location1', 'Bernal - Maipú 327', 'Se lo vió por última vez en esos alrededores', 0, 0, 1, 1);
+insert into Publication values (1, 'location1', 'Bernal - Maipú 327', 'Fue encontrado por esos alrededores', 0, 0, 1, 1);
 insert into Publication values (2, 'location2', 'Berazategui - Av. Mitre', 'Se la vió por última vez cerca de la UAI', 0, 1, 2, 2);
-insert into Publication values (3, 'location3', 'Quilmes - Av. Mitre', 'Se la vió por última vez en la estacion de servicio de calle Bransen', 0, 0, 3, 3);
+insert into Publication values (3, 'location3', 'Quilmes - Av. Mitre', 'Se lo encontró en la estacion de servicio de calle Bransen', 0, 0, 3, 3);
 insert into Publication values (4, 'location4', 'Reconquista - CABA', 'Se la vió por última vez cerca de Avenida Cordoba', 0, 1, 4, 4);
-insert into Publication values (5, 'location5', 'Avellaneda - Ramon Franco', 'Ultima ubicacion estacion de tren Wilde', 0, 0, 5, 5);
+insert into Publication values (5, 'location5', 'Avellaneda - Ramon Franco', 'Se lo rescató en estacion de tren Wilde', 0, 0, 5, 5);
 insert into Publication values (6, 'location6', 'Palermo - Arenales', 'Se la vió por última vez por el barrio', 0, 1, 6, 6);
-insert into Publication values (7, 'location7', 'Florencio Varela - Avenida del Trabajo', 'Cerca de la Universidad Jauretche', 0, 0, 7, 2);
+insert into Publication values (7, 'location7', 'Florencio Varela - Avenida del Trabajo', 'Fue rescatado cerca de la Universidad Jauretche', 0, 0, 7, 2);
 
 
 --Sección tabla intermedia PUBLICATION_PHOTOS
 insert into PUBLICATION_PHOTOS values (1, 'https://www.elmundodelgato.com/fotos/78/1219_P1211772.JPG');
 insert into PUBLICATION_PHOTOS values (1, 'https://s3-eu-west-1.amazonaws.com/barkibu-blog/blog+images/como-saber-que-raza-es-mi-gato/gato-tuxis2.png');
+insert into PUBLICATION_PHOTOS values (1, 'https://i.pinimg.com/originals/2e/95/13/2e9513de4ee17692a1f78985b139d1f4.jpg');
 insert into PUBLICATION_PHOTOS values (1, 'https://cdn.pixabay.com/photo/2018/11/27/21/21/cat-3842408_960_720.jpg');
 
 insert into PUBLICATION_PHOTOS values (2, 'https://misanimales.com/wp-content/uploads/2015/12/cocker-spaniel-americano.jpg');
@@ -54,5 +57,3 @@ insert into PUBLICATION_PHOTOS values (6, 'https://cdn.pixabay.com/photo/2017/07
 insert into PUBLICATION_PHOTOS values (6, 'https://cdn.pixabay.com/photo/2017/02/15/12/12/cat-2068462_960_720.jpg');
 
 insert into PUBLICATION_PHOTOS values (7, 'https://cdn.pixabay.com/photo/2018/08/12/16/59/ara-3601194_960_720.jpg');
-
-
