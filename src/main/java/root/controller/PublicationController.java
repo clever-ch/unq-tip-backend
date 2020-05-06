@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import root.DTO.AnimalDTO;
+import root.DTO.PersonDTO;
 import root.DTO.PublicationDTO;
 import root.DTO.UserDTO;
 import root.constants.PublicationType;
@@ -73,12 +74,25 @@ public class PublicationController {
 		userDTO.Id = publication.getUser().getId();
 		userDTO.UserName = publication.getUser().getUserName();
 		userDTO.Email = publication.getUser().getEmail();		
-		userDTO.AccountName = publication.getUser().getAccount().getName();
-		userDTO.AccountSurName = publication.getUser().getAccount().getSurName();
-		userDTO.AccountTelephone = publication.getUser().getAccount().getTelephone();
-		userDTO.AccountAddress = publication.getUser().getAccount().getAddress();
+		userDTO.Password = publication.getUser().getPassword();
+		userDTO.UserGuid = publication.getUser().getUserGuid();
+		
+		userDTO.PersonDTO = GetPersonDTOByPublication(publication);
 		
 		return userDTO;
+	}
+	
+	private PersonDTO GetPersonDTOByPublication(Publication publication)
+	{
+		PersonDTO personDTO = new PersonDTO();
+		
+		personDTO.Name = publication.getUser().getPerson().getName();
+		personDTO.SurName = publication.getUser().getPerson().getSurName();
+		personDTO.Telephone = publication.getUser().getPerson().getTelephone();
+		personDTO.Address = publication.getUser().getPerson().getAddress();
+		personDTO.Location = publication.getUser().getPerson().getLocation();
+		
+		return personDTO;
 	}
 
 	
