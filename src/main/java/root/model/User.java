@@ -7,10 +7,13 @@ import root.utilities.Entity;
 public class User extends Entity {
 	
 	private String email;
+	private String password;
+	private String userGuid;
 	private String userName;
 	
+	
 	@OneToOne
-	private Account account;
+	private Person person;
 	
 	public String getUserName() {
 		return userName;
@@ -28,11 +31,26 @@ public class User extends Entity {
 		this.email = email;
 	}
 
-	public Account getAccount() {
-		return account;
+	public Person getPerson() {
+		return person;
 	}
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUserGuid() {
+		return userGuid;
+	}
+
+	public void setUserGuid(String userGuid) {
+		this.userGuid = userGuid;
+	}
 }
