@@ -1,9 +1,9 @@
 package model;
 
-import model.factories.AccountFactory;
+import model.factories.PersonFactory;
 import model.factories.UserFactory;
 import org.junit.Test;
-import root.model.Account;
+import root.model.Person;
 import root.model.User;
 
 import static org.junit.Assert.assertEquals;
@@ -31,10 +31,10 @@ public class TestUser {
     @Test
     public void testUserHasAccount() {
 
-        Account aAccount = AccountFactory.anyAccount();
+        Person aAccount = PersonFactory.anyPerson();
 
         User anyUser = UserFactory.createAUserWithAccount(aAccount);
 
-        assertEquals(anyUser.getAccount(), aAccount);
+        assertEquals(anyUser.getPerson(), aAccount);
     }
 }
