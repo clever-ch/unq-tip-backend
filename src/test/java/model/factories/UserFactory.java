@@ -1,6 +1,6 @@
 package model.factories;
 
-import root.model.Account;
+import root.model.Person;
 import root.model.User;
 
 public class UserFactory {
@@ -9,11 +9,11 @@ public class UserFactory {
         return new User();
     }
 
-    public static User createACompleteUser(String userName, String email, Account account){
+    public static User createACompleteUser(String userName, String email, Person account){
         User newUser = new User();
         newUser.setUserName(userName);
         newUser.setEmail(email);
-        newUser.setAccount(account);
+        newUser.setPerson(account);
 
         return newUser;
     }
@@ -30,9 +30,9 @@ public class UserFactory {
         return newUser;
     }
 
-    public static User createAUserWithAccount(Account aAccount){
+    public static User createAUserWithAccount(Person aAccount){
         User newUser = new User();
-        newUser.setAccount(aAccount);
+        newUser.setPerson(aAccount);
         return newUser;
     }
 }
