@@ -11,7 +11,6 @@ import root.DTO.AnimalDTO;
 import root.DTO.PersonDTO;
 import root.DTO.PublicationDTO;
 import root.DTO.UserDTO;
-import root.constants.PublicationType;
 import root.model.Publication;
 import root.repository.PublicationRepository;
 
@@ -100,13 +99,10 @@ public class PublicationController {
 	public List<PublicationDTO> getAllPublicationsFound() {
 		
 		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
-		List<Publication> publications = publicationRepository.findAll();
+		List<Publication> publications = publicationRepository.findAllPublicationsFound();
 		
 		for (Publication publication : publications) {
-			
-			if (publication.getPublicationType().equals(PublicationType.FOUND)) {
 				publicationsDTO.add(ConvertPublicationToPublicationDTO(publication));
-			}			
 		}
 		
 		return publicationsDTO;
@@ -116,13 +112,10 @@ public class PublicationController {
 	public List<PublicationDTO> getAllPublicationsLost() {
 		
 		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
-		List<Publication> publications = publicationRepository.findAll();
+		List<Publication> publications = publicationRepository.findAllPublicationsLost();
 		
 		for (Publication publication : publications) {
-			
-			if (publication.getPublicationType().equals(PublicationType.LOST)) {
 				publicationsDTO.add(ConvertPublicationToPublicationDTO(publication));
-			}			
 		}
 		
 		return publicationsDTO;
