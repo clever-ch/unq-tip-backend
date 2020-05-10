@@ -1,10 +1,7 @@
 package root.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import root.DTO.LoginDTO;
 import root.DTO.PersonDTO;
 import root.DTO.UserDTO;
+import root.exceptions.InvalidUserException;
 import root.model.Person;
 import root.model.User;
 import root.repository.UserRepository;
@@ -27,32 +25,17 @@ public class AuthController {
 
 	
 	@PostMapping("/log-in")
-	public LoginDTO login(@Valid @RequestBody LoginDTO loginDTO)
+	public UserDTO login(@Valid @RequestBody LoginDTO loginDTO) throws InvalidUserException
 	{
-		System.out.println("Llego al back con user y password:");
-		System.out.println(loginDTO.Username + " " + loginDTO.Password);
+		User user = userRepository.findByUserNameAndPassword(loginDTO.Username, loginDTO.Password);
 		
-		String userIngresado = loginDTO.Username;
-		String pssIngresado = loginDTO.Password;
-		UserDTO userDTO = new UserDTO();
-		
-		List<User> usuarios = userRepository.findAll();
-		
-		for (User user : usuarios) {
-			
-			if (user.getUserName().equals(userIngresado) && user.getPassword().equals(pssIngresado)) {
-				userDTO = ConvertUserToUserDTO(user);
-			}
-			else
-			{
-				//Lanzar excepcion
-			}
+		if (user != null) {
+			return ConvertUserToUserDTO(user);
 		}
-		
-		System.out.println("Encuentro el usuario con Id:");
-		System.out.println(userDTO.Id);
-
-		return loginDTO;
+		else
+		{
+			throw new InvalidUserException("El usuario ingresado no existe");
+		}
 	}
 	
 	private PersonDTO ConvertPersonToPersonDTO(Person person)
