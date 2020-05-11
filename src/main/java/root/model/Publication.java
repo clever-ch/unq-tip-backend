@@ -116,6 +116,7 @@ public class Publication extends Entity {
 
     public String getPublicationAddress() {
         return publicationAddress;
+
     }
 
     public void setPublicationAddress(String address) {
