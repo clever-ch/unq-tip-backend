@@ -10,7 +10,7 @@ public class User extends Entity {
 	private String userName;
 	
 	@OneToOne
-	private Account account;
+	private Person account;
 	
 	public String getUserName() {
 		return userName;
@@ -28,10 +28,10 @@ public class User extends Entity {
 		this.email = email;
 	}
 
-	public Account getAccount() {
+	public Person getAccount() {
 		return account;
 	}
-	public void setAccount(Account account) {
+	public void setAccount(Person account) {
 		this.account = account;
 	}
 

@@ -1,20 +1,20 @@
 package model;
 
-import model.factories.AccountFactory;
+import model.factories.PersonFactory;
 import org.junit.Test;
-import root.model.Account;
+import root.model.Person;
 
 
 import static org.junit.Assert.assertEquals;
 
-public class TestAccount {
+public class TestPerson {
 
     @Test
     public void testAccountHasName() {
 
         final String ACCOUNT_NAME = "Name";
 
-        Account anyAccount = AccountFactory.createAccountWithName(ACCOUNT_NAME);
+        Person anyAccount = PersonFactory.createAccountWithName(ACCOUNT_NAME);
 
         assertEquals(anyAccount.getName(), ACCOUNT_NAME);
     }
@@ -24,7 +24,7 @@ public class TestAccount {
 
         final String ACCOUNT_SURNAME = "SurName";
 
-        Account anyAccount = AccountFactory.createAccountWithSurname(ACCOUNT_SURNAME);
+        Person anyAccount = PersonFactory.createAccountWithSurname(ACCOUNT_SURNAME);
 
         assertEquals(anyAccount.getSurName(), ACCOUNT_SURNAME);
     }
@@ -34,7 +34,7 @@ public class TestAccount {
 
         final String ACCOUNT_TELEPHONE = "Telephone";
 
-        Account anyAccount = AccountFactory.createAccountWithTelephone(ACCOUNT_TELEPHONE);
+        Person anyAccount = PersonFactory.createAccountWithTelephone(ACCOUNT_TELEPHONE);
 
         assertEquals(anyAccount.getTelephone(), ACCOUNT_TELEPHONE);
     }
@@ -44,7 +44,7 @@ public class TestAccount {
 
         final String ACCOUNT_ADDRESS = "address";
 
-        Account anyAccount = AccountFactory.createAccountWithAddress(ACCOUNT_ADDRESS);
+        Person anyAccount = PersonFactory.createAccountWithAddress(ACCOUNT_ADDRESS);
 
         assertEquals(anyAccount.getAddress(), ACCOUNT_ADDRESS);
     }
@@ -54,7 +54,7 @@ public class TestAccount {
 
         final String ACCOUNT_LOCATION = "Location";
 
-        Account anyAccount = AccountFactory.createAccountWithLocation(ACCOUNT_LOCATION);
+        Person anyAccount = PersonFactory.createAccountWithLocation(ACCOUNT_LOCATION);
 
         assertEquals(anyAccount.getLocation(), ACCOUNT_LOCATION);
     }
