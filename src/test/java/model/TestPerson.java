@@ -10,53 +10,53 @@ import static org.junit.Assert.assertEquals;
 public class TestPerson {
 
     @Test
-    public void testAccountHasName() {
+    public void testPersonHasName() {
 
-        final String ACCOUNT_NAME = "Name";
+        final String PERSON_NAME = "Name";
 
-        Person anyAccount = PersonFactory.createAccountWithName(ACCOUNT_NAME);
+        Person anyPerson = PersonFactory.createPersonWithName(PERSON_NAME);
 
-        assertEquals(anyAccount.getName(), ACCOUNT_NAME);
+        assertEquals(anyPerson.getName(), PERSON_NAME);
     }
 
     @Test
-    public void testAccountHasSurName() {
+    public void testPersonHasSurName() {
 
-        final String ACCOUNT_SURNAME = "SurName";
+        final String PERSON_SURNAME = "SurName";
 
-        Person anyAccount = PersonFactory.createAccountWithSurname(ACCOUNT_SURNAME);
+        Person anyPerson = PersonFactory.createPersonWithSurname(PERSON_SURNAME);
 
-        assertEquals(anyAccount.getSurName(), ACCOUNT_SURNAME);
+        assertEquals(anyPerson.getSurName(), PERSON_SURNAME);
     }
 
     @Test
-    public void testAccountHasTelephone() {
+    public void testPersonHasTelephone() {
 
-        final String ACCOUNT_TELEPHONE = "Telephone";
+        final String PERSON_TELEPHONE = "Telephone";
 
-        Person anyAccount = PersonFactory.createAccountWithTelephone(ACCOUNT_TELEPHONE);
+        Person anyPerson = PersonFactory.createPersonWithTelephone(PERSON_TELEPHONE);
 
-        assertEquals(anyAccount.getTelephone(), ACCOUNT_TELEPHONE);
+        assertEquals(anyPerson.getTelephone(), PERSON_TELEPHONE);
     }
 
     @Test
-    public void testAccountHasAddress() {
+    public void testPersonHasAddress() {
 
-        final String ACCOUNT_ADDRESS = "address";
+        final String PERSON_ADDRESS = "address";
 
-        Person anyAccount = PersonFactory.createAccountWithAddress(ACCOUNT_ADDRESS);
+        Person anyPerson = PersonFactory.createPersonWithAddress(PERSON_ADDRESS);
 
-        assertEquals(anyAccount.getAddress(), ACCOUNT_ADDRESS);
+        assertEquals(anyPerson.getAddress(), PERSON_ADDRESS);
     }
 
     @Test
-    public void testAccountHasLocation() {
+    public void testPersonHasLocation() {
 
-        final String ACCOUNT_LOCATION = "Location";
+        final String PERSON_LOCATION = "Location";
 
-        Person anyAccount = PersonFactory.createAccountWithLocation(ACCOUNT_LOCATION);
+        Person anyAccount = PersonFactory.createPersonWithLocation(PERSON_LOCATION);
 
-        assertEquals(anyAccount.getLocation(), ACCOUNT_LOCATION);
+        assertEquals(anyAccount.getLocation(), PERSON_LOCATION);
     }
 
 }

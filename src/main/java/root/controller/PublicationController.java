@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import root.DTO.AnimalDTO;
+import root.DTO.PersonDTO;
 import root.DTO.PublicationDTO;
 import root.DTO.UserDTO;
-import root.constants.PublicationType;
 import root.model.Publication;
 import root.repository.PublicationRepository;
 
@@ -73,12 +73,25 @@ public class PublicationController {
 		userDTO.Id = publication.getUser().getId();
 		userDTO.UserName = publication.getUser().getUserName();
 		userDTO.Email = publication.getUser().getEmail();		
-		userDTO.AccountName = publication.getUser().getAccount().getName();
-		userDTO.AccountSurName = publication.getUser().getAccount().getSurName();
-		userDTO.AccountTelephone = publication.getUser().getAccount().getTelephone();
-		userDTO.AccountAddress = publication.getUser().getAccount().getAddress();
+		userDTO.Password = publication.getUser().getPassword();
+		userDTO.UserGuid = publication.getUser().getUserGuid();
+		
+		userDTO.PersonDTO = GetPersonDTOByPublication(publication);
 		
 		return userDTO;
+	}
+	
+	private PersonDTO GetPersonDTOByPublication(Publication publication)
+	{
+		PersonDTO personDTO = new PersonDTO();
+		
+		personDTO.Name = publication.getUser().getPerson().getName();
+		personDTO.SurName = publication.getUser().getPerson().getSurName();
+		personDTO.Telephone = publication.getUser().getPerson().getTelephone();
+		personDTO.Address = publication.getUser().getPerson().getAddress();
+		personDTO.Location = publication.getUser().getPerson().getLocation();
+		
+		return personDTO;
 	}
 
 	
@@ -86,13 +99,10 @@ public class PublicationController {
 	public List<PublicationDTO> getAllPublicationsFound() {
 		
 		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
-		List<Publication> publications = publicationRepository.findAll();
+		List<Publication> publications = publicationRepository.findAllPublicationsFound();
 		
 		for (Publication publication : publications) {
-			
-			if (publication.getPublicationType().equals(PublicationType.FOUND)) {
 				publicationsDTO.add(ConvertPublicationToPublicationDTO(publication));
-			}			
 		}
 		
 		return publicationsDTO;
@@ -102,13 +112,10 @@ public class PublicationController {
 	public List<PublicationDTO> getAllPublicationsLost() {
 		
 		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
-		List<Publication> publications = publicationRepository.findAll();
+		List<Publication> publications = publicationRepository.findAllPublicationsLost();
 		
 		for (Publication publication : publications) {
-			
-			if (publication.getPublicationType().equals(PublicationType.LOST)) {
 				publicationsDTO.add(ConvertPublicationToPublicationDTO(publication));
-			}			
 		}
 		
 		return publicationsDTO;

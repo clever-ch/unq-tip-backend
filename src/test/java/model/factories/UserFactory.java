@@ -13,7 +13,7 @@ public class UserFactory {
         User newUser = new User();
         newUser.setUserName(userName);
         newUser.setEmail(email);
-        newUser.setAccount(account);
+        newUser.setPerson(account);
 
         return newUser;
     }
@@ -32,7 +32,7 @@ public class UserFactory {
 
     public static User createAUserWithAccount(Person aAccount){
         User newUser = new User();
-        newUser.setAccount(aAccount);
+        newUser.setPerson(aAccount);
         return newUser;
     }
 }

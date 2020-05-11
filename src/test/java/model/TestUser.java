@@ -31,10 +31,10 @@ public class TestUser {
     @Test
     public void testUserHasAccount() {
 
-        Person aAccount = PersonFactory.anyAccount();
+        Person aAccount = PersonFactory.anyPerson();
 
         User anyUser = UserFactory.createAUserWithAccount(aAccount);
 
-        assertEquals(anyUser.getAccount(), aAccount);
+        assertEquals(anyUser.getPerson(), aAccount);
     }
 }
