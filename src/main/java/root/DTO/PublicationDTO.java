@@ -4,7 +4,6 @@ import java.util.List;
 import root.constants.PublicationType;
 import root.constants.PublicationStatus;
 
-
 public class PublicationDTO {
 
 	public long Id;

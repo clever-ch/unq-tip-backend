@@ -3,7 +3,7 @@ package root.model;
 import root.utilities.Entity;
 
 @javax.persistence.Entity
-public class Account extends Entity {
+public class Person extends Entity {
 	
 	private String address;
 	private String location;
