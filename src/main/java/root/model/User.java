@@ -11,9 +11,9 @@ public class User extends Entity {
 	private String userGuid;
 	private String userName;
 	
-	
 	@OneToOne
 	private Person person;
+
 	
 	public String getUserName() {
 		return userName;

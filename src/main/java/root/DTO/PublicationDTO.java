@@ -16,5 +16,6 @@ public class PublicationDTO {
 	public PublicationType PublicationType;
 	public PublicationStatus PublicationStatus;
 	public String PublicationDescription;
+
 	public List<String> Photos;
 }
