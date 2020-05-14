@@ -1,7 +1,6 @@
 --Sección Accounts
 insert into Person values (1, 'andres baranda 625', 'Quilmes', 'Pepe', 'Perez', '011-2222-3333');
 insert into Person values (2, 'Maipú 444', 'Bernal', 'Pato', 'Gonzales', '011-3333-4444');
-
 insert into Person values (3, 'Av. Mitre', 'Quilmes', 'Juan', 'Garcia', '011-3333-4444');
 insert into Person values (4, 'Av Cordoba', 'Capital Federal', 'Pedro', 'Gomez', '011-3333-4444');
 insert into Person values (5, 'Calle 44', 'Tigre', 'Luis', 'Galvez', '011-3333-4444');
@@ -10,7 +9,6 @@ insert into Person values (6, 'Ramon Franco', 'Avellaneda', 'Roberto', 'Smith', 
 --Sección Users
 insert into User values (1, 'emailUser1@gmail.com', 'contraseña1', '123e4530-e89b-12d3-a430-556642440000', 'PepePer01', 1);
 insert into User values (2, 'emailUser2@gmail.com', 'contraseña2', '123e4540-e89b-12d3-a440-556642440000', 'PGonzales01', 2);
-
 insert into User values (3, 'emailUser3@gmail.com', 'contraseña3', '123e4550-e89b-12d3-a450-556642440000', 'JGarcia01', 3);
 insert into User values (4, 'emailUser4@gmail.com', 'contraseña4', '123e4560-e89b-12d3-a460-556642440000', 'PGomez01', 4);
 insert into User values (5, 'emailUser5@gmail.com', 'contraseña5', '123e4570-e89b-12d3-a470-556642440000', 'LuisGonzales01', 5);

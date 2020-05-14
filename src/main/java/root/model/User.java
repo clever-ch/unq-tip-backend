@@ -13,7 +13,6 @@ public class User extends Entity {
 	
 	
 	@OneToOne
-
 	private Person person;
 	
 	public String getUserName() {
@@ -35,6 +34,7 @@ public class User extends Entity {
 	public Person getPerson() {
 		return person;
 	}
+  
 	public void setPerson(Person person) {
 		this.person = person;
 	}

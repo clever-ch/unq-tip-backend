@@ -25,7 +25,6 @@ public class PersonFactory {
     }
 
     public static Person createPersonWithSurname(String aSurname){
-
         Person aAccount = new Person();
         aAccount.setSurName(aSurname);
         return aAccount;
@@ -33,21 +32,18 @@ public class PersonFactory {
 
 
     public static Person createPersonWithTelephone(String aTelephone){
-
         Person aAccount = new Person();
         aAccount.setTelephone(aTelephone);
         return aAccount;
     }
 
     public static Person createPersonWithAddress(String aAddress){
-
         Person aAccount = new Person();
         aAccount.setAddress(aAddress);
         return aAccount;
     }
 
     public static Person createPersonWithLocation(String aLocation){
-
         Person aAccount = new Person();
         aAccount.setLocation(aLocation);
         return aAccount;
