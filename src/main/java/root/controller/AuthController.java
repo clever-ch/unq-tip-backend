@@ -70,7 +70,7 @@ public class AuthController {
 		
 		return userDTO;
 	}
-	
+
 	@PostMapping("/validate-user")
 	public boolean loggedInUserExists(@Valid @RequestBody LoginDTO loginDTO) throws InvalidUserException
 	{

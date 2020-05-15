@@ -11,9 +11,9 @@ public class User extends Entity {
 	private String userGuid;
 	private String userName;
 	
+	
 	@OneToOne
 	private Person person;
-
 	
 	public String getUserName() {
 		return userName;
@@ -34,6 +34,7 @@ public class User extends Entity {
 	public Person getPerson() {
 		return person;
 	}
+  
 	public void setPerson(Person person) {
 		this.person = person;
 	}
