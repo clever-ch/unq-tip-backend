@@ -9,7 +9,7 @@ import root.model.Publication;
 
 @Repository
 public interface PublicationRepository extends JpaRepository<Publication, Long>{
-
+	
 	@Query("select p from Publication p where p.publicationType = 0")
 	List<Publication> findAllPublicationsFound();
 	

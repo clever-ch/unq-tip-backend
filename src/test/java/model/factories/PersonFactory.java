@@ -7,7 +7,6 @@ public class PersonFactory {
     public static Person anyPerson() { return new Person(); }
 
     public static Person createPersonComplete(String aName, String aSurname, String aTelephone, String aAddress, String aLocation){
-
         Person aAccount = new Person();
         aAccount.setName(aName);
         aAccount.setSurName(aSurname);
@@ -29,7 +28,6 @@ public class PersonFactory {
         aAccount.setSurName(aSurname);
         return aAccount;
     }
-
 
     public static Person createPersonWithTelephone(String aTelephone){
         Person aAccount = new Person();
