@@ -72,18 +72,12 @@ public class AuthController {
 	}
 	
 	@PostMapping("/validate-user")
-	public boolean loggedInUserExists(@Valid @RequestBody LoginDTO loginDTO) throws InvalidUserException
+	public boolean loggedInUserExists(@Valid @RequestBody LoginDTO loginDTO)
 	{
 		System.out.println("Llegue a la validacion");
 		User user = userRepository.findUserByUserNameAndUserGuid(loginDTO.Username, loginDTO.UserGuid);
 		
-		if (user != null) {
-			return true;
-		}
-		else
-		{
-			throw new InvalidUserException("Error usuario inexistente.");
-		}
+		return user != null;
 	}
 	
 	@GetMapping("/users/{userGuid}")
