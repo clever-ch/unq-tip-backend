@@ -17,7 +17,6 @@ public class Publication extends Entity {
 	@OneToOne
     private User user;
 
-    @Column(nullable=false)
     private String location;
 
     @Column(nullable=false)
@@ -29,7 +28,6 @@ public class Publication extends Entity {
     @Column(nullable=false)
     private String publicationAddress;
 
-    @Column(nullable=false)
     private String publicationDescription;
 
     @Column(nullable=false)
