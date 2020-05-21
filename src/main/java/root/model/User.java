@@ -1,5 +1,6 @@
 package root.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.OneToOne;
 import root.utilities.Entity;
 
@@ -12,7 +13,7 @@ public class User extends Entity {
 	private String userName;
 	
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Person person;
 	
 	public String getUserName() {

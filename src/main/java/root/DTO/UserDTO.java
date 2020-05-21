@@ -1,7 +1,5 @@
 package root.DTO;
 
-import root.DTO.PersonDTO;
-
 public class UserDTO {
 	
 	public long Id;
