@@ -3,6 +3,8 @@ package root.model;
 import root.constants.PublicationStatus;
 import root.constants.PublicationType;
 import root.utilities.Entity;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.OneToOne;
@@ -11,10 +13,10 @@ import java.util.List;
 @javax.persistence.Entity
 public class Publication extends Entity {
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
     private Animal animal;
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
     private User user;
 
     private String location;
