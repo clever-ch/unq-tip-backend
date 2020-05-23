@@ -2,7 +2,6 @@ package root.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -133,7 +132,6 @@ public class PublicationController {
 	
 	@PostMapping("/createPublication")
 	public Publication createPublication(@Valid @RequestBody PublicationDTO publicationDTO) {
-		System.out.println("Llegué al controller");
 		
 		Publication publication = ConvertPublicationDTOToPublication(publicationDTO);
 		
@@ -161,7 +159,7 @@ public class PublicationController {
 		user.setEmail(userDTO.Email);
 		user.setPassword(userDTO.Password);
 		user.setUserName(userDTO.UserName);
-		user.setUserGuid(UUID.randomUUID().toString());
+		user.setUserGuid(userDTO.UserGuid);
 		user.setPerson(ConvertPersonDTOToPerson(userDTO.PersonDTO));
 		
 		return user;
