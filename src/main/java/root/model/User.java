@@ -2,7 +2,11 @@ package root.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.OneToOne;
+
+import root.controller.exceptions.EmailInvalidException;
 import root.utilities.Entity;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @javax.persistence.Entity
 public class User extends Entity {
@@ -11,7 +15,6 @@ public class User extends Entity {
 	private String password;
 	private String userGuid;
 	private String userName;
-	
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	private Person person;
@@ -54,5 +57,28 @@ public class User extends Entity {
 
 	public void setUserGuid(String userGuid) {
 		this.userGuid = userGuid;
+	}
+
+	public boolean isValidUser() {
+		return hasUsername()
+                & hasEmail()
+                & hasPassword()
+                & hasAPersonComplete();
+	}
+
+	private boolean hasAPersonComplete() {
+		return this.person.isValidPerson();
+	}
+
+	private boolean hasEmail() {
+		return this.email != null | this.email != "" ;
+	}
+
+	private boolean hasPassword() {
+		return this.password != null | this.password != "";
+	}
+
+	private boolean hasUsername() {
+		return this.userName != null | this.userName != "";
 	}
 }
