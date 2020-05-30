@@ -132,6 +132,7 @@ public class PublicationController {
 	
 	@PostMapping("/createPublication")
 	public Publication createPublication(@Valid @RequestBody PublicationDTO publicationDTO) {
+		System.out.println("Llegue al controler");
 		
 		Publication publication = ConvertPublicationDTOToPublication(publicationDTO);
 		
