@@ -3,7 +3,6 @@ package root.model;
 import root.constants.PublicationStatus;
 import root.constants.PublicationType;
 import root.utilities.Entity;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
