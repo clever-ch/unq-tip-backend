@@ -60,9 +60,9 @@ public class User extends Entity {
 	}
 
 	public boolean isValidUser() {
-		return hasUsername()
-                & hasEmail()
-                & hasPassword()
+		return !isEmptyUsername()
+                & !isEmptyEmail()
+                & !isEmptyPassword()
                 & hasAPersonComplete();
 	}
 
@@ -70,15 +70,15 @@ public class User extends Entity {
 		return this.person.isValidPerson();
 	}
 
-	private boolean hasEmail() {
-		return this.email != null | this.email != "" ;
+	private boolean isEmptyEmail() {
+		return this.email == null | this.email == "" ;
 	}
 
-	private boolean hasPassword() {
-		return this.password != null | this.password != "";
+	private boolean isEmptyPassword() {
+		return this.password == null | this.password == "";
 	}
 
-	private boolean hasUsername() {
-		return this.userName != null | this.userName != "";
+	private boolean isEmptyUsername() {
+		return this.userName == null | this.userName == "";
 	}
 }
