@@ -38,7 +38,6 @@ insert into Publication values (4, 'location4', 'Reconquista - CABA', 'Se la vi�
 insert into Publication values (6, 'location6', 'Palermo - Arenales', 'Se la vió por última vez por el barrio', 0, 1, 6, 6);
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 --Sección tabla intermedia PUBLICATION_PHOTOS
 insert into PUBLICATION_PHOTOS values (1, 'https://firebasestorage.googleapis.com/v0/b/tip-sospets.appspot.com/o/img-publication-found%2F1219_P1211772.JPG?alt=media&token=eab029d1-4bd5-4554-9f54-1d01a47723df');
 insert into PUBLICATION_PHOTOS values (1, 'https://firebasestorage.googleapis.com/v0/b/tip-sospets.appspot.com/o/img-publication-found%2F2e9513de4ee17692a1f78985b139d1f4.jpg?alt=media&token=51f3e7aa-ca90-412b-b957-78bc6f11f0cc');
@@ -66,3 +65,19 @@ insert into PUBLICATION_PHOTOS values (6, 'https://firebasestorage.googleapis.co
 
 
 insert into PUBLICATION_PHOTOS values (7, 'https://firebasestorage.googleapis.com/v0/b/tip-sospets.appspot.com/o/img-publication-found%2Fara-3601194_960_720.jpg?alt=media&token=6ca8a03e-a8c8-4c5f-b451-fba95a9c0451');
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--Sección Servicios de Cuidado
+ insert into CARE values (1, 'Servicio de Cuidado de mascotas por Hora By PepePer01', 1, 0, 6, 1);
+ insert into CARE values (2, 'Servicio de Cuidado de mascotas por Día By PGomez01', 1, 1, 1, 4);
+ 
+ 
+--Sección Servicios de Tranporte
+ insert into TRANSPORT values (1, 'Servicio de Transporte de mascotas por Hora By PGonzales01', 1, 0, 2, 2);
+ insert into TRANSPORT values (2, 'Servicio de Transporte de mascotas por Día By LuisGonzales01', 1, 1, 3, 5);
+ 
+ 
+ --Sección Servicios de Tránsito
+ insert into TRANSIT values (1, 'Servicio de Tránsito de mascotas por Día By JGarcia01', 1, 1, 4, 3);
+ insert into TRANSIT values (2, 'Servicio de Tránsito de mascotas por Semana By Rsmith', 1, 2, 2, 6);
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------
