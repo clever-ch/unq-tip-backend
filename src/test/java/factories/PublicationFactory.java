@@ -1,8 +1,10 @@
 package factories;
 
+import root.constants.AnimalType;
 import root.constants.PublicationStatus;
 import root.constants.PublicationType;
 import root.model.Animal;
+import root.model.Person;
 import root.model.Publication;
 import root.model.User;
 
@@ -68,4 +70,17 @@ public class PublicationFactory {
         return newPublication;
     }
 
+    public static Publication createFullPublicationWithType(PublicationType type) {
+    	
+    	Animal animal = AnimalFactory.createCompleteAnimal(AnimalType.BIRD, "", "", "", "");
+    	Person person = PersonFactory.createPersonComplete("", "", "", "", "");
+    	User user = UserFactory.createACompleteUser("", "", person);
+    	
+    	Publication newPublication = new Publication();
+        newPublication.setPublicationType(type);
+        newPublication.setAnimal(animal);
+        newPublication.setUser(user);
+        
+        return newPublication;
+    }
 }
