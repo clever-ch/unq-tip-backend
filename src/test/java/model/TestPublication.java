@@ -1,8 +1,8 @@
 package model;
 
-import model.factories.AnimalFactory;
-import model.factories.PublicationFactory;
-import model.factories.UserFactory;
+import factories.AnimalFactory;
+import factories.PublicationFactory;
+import factories.UserFactory;
 import org.junit.Test;
 import root.constants.PublicationStatus;
 import root.constants.PublicationType;
