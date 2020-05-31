@@ -1,6 +1,6 @@
 package model;
 
-import model.factories.PersonFactory;
+import factories.PersonFactory;
 import org.junit.Test;
 import root.model.Person;
 
