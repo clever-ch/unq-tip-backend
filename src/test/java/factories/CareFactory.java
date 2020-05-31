@@ -2,7 +2,6 @@ package factories;
 
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
-import root.model.Animal;
 import root.model.Care;
 import root.model.User;
 
@@ -12,12 +11,11 @@ public class CareFactory {
         return new Care();
     }
 
-    public static Care createCompleteCareService(User aUser, ServiceStatus aServiceStatus, Animal aAnimal, String aDescription,
+    public static Care createCompleteCareService(User aUser, ServiceStatus aServiceStatus, String aDescription,
                                                 UnidOfTime aUnidOfTime, int careTime){
         Care aCareService = new Care();
         aCareService.setUser(aUser);
         aCareService.setServiceStatus(aServiceStatus);
-        aCareService.setAnimal(aAnimal);
         aCareService.setDescription(aDescription);
         aCareService.setUnidOfTime(aUnidOfTime);
         aCareService.setCareTime(careTime);
@@ -35,13 +33,6 @@ public class CareFactory {
     public static Care createCareServiceWithServiceStatus(ServiceStatus aServiceStatus){
         Care aCareService = new Care();
         aCareService.setServiceStatus(aServiceStatus);
-
-        return aCareService;
-    }
-
-    public static Care createCareServiceWithAnimal(Animal aAnimal){
-        Care aCareService = new Care();
-        aCareService.setAnimal(aAnimal);
 
         return aCareService;
     }
