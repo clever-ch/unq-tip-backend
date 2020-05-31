@@ -42,4 +42,29 @@ public class Person extends Entity {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public boolean isValidPerson() {
+		return hasName() &
+				hasSurname() &
+				hasLocation() &
+				hasAddress() & 
+				hasTelephone();
+	}
+	private boolean hasAddress() {
+		return this.address != "" & this.address != null;
+	}
+	private boolean hasLocation() {
+		return this.location != "" & this.location != null;
+	}
+	private boolean hasTelephone() {
+		return this.telephone != "" & this.telephone != null;
+	}
+	private boolean hasSurname() {
+		return this.surName != "" & this.surName != null;
+	}
+	
+	private boolean hasName() {
+		return this.name != "" & this.name != null;
+	}
+	
+	
 }

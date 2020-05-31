@@ -55,4 +55,4 @@ insert into PUBLICATION_PHOTOS values (6, 'https://cdn.pixabay.com/photo/2017/07
 insert into PUBLICATION_PHOTOS values (6, 'https://cdn.pixabay.com/photo/2017/02/15/12/12/cat-2068462_960_720.jpg');
 
 insert into PUBLICATION_PHOTOS values (7, 'https://cdn.pixabay.com/photo/2018/08/12/16/59/ara-3601194_960_720.jpg');
-insert into PUBLICATION_PHOTOS values (7, 'https://cdn.pixabay.com/photo/2018/08/12/16/59/ara-3601194_960_720.jpg');
+
