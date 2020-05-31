@@ -1,8 +1,8 @@
 package model;
 
-import model.factories.PublicationFactory;
-import model.factories.PublicationHistoryFactory;
-import model.factories.UserFactory;
+import factories.PublicationFactory;
+import factories.PublicationHistoryFactory;
+import factories.UserFactory;
 import org.junit.Test;
 import root.model.Publication;
 import root.model.PublicationHistory;
