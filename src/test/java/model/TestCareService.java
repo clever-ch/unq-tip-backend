@@ -1,9 +1,9 @@
 package model;
 
-import model.factories.AnimalFactory;
-import model.factories.CareFactory;
-import model.factories.TransportFactory;
-import model.factories.UserFactory;
+import factories.AnimalFactory;
+import factories.CareFactory;
+import factories.TransportFactory;
+import factories.UserFactory;
 import org.junit.Test;
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
