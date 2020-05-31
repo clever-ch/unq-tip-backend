@@ -1,7 +1,7 @@
 package model;
 
-import model.factories.PersonFactory;
-import model.factories.UserFactory;
+import factories.PersonFactory;
+import factories.UserFactory;
 import org.junit.Test;
 import root.model.Person;
 import root.model.User;
