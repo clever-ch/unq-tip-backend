@@ -1,6 +1,6 @@
 package model;
 
-import model.factories.AnimalFactory;
+import factories.AnimalFactory;
 import org.junit.Test;
 import root.constants.AnimalType;
 import root.model.Animal;
