@@ -1,12 +1,10 @@
 package model;
 
-import factories.AnimalFactory;
 import factories.TransitFactory;
 import factories.UserFactory;
 import org.junit.Test;
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
-import root.model.Animal;
 import root.model.Transit;
 import root.model.User;
 import static org.junit.Assert.assertEquals;
@@ -32,16 +30,6 @@ public class TestTransitService {
         Transit aTransit = TransitFactory.createTransitServiceWithServiceStatus(TRANSIT_SERVICESTATUS);
 
         assertEquals(aTransit.getServiceStatus(), TRANSIT_SERVICESTATUS);
-    }
-
-    @Test
-    public void testTransitServiceHasAnimal(){
-
-        final Animal TRANSIT_ANIMAL = AnimalFactory.anyAnimal();
-
-        Transit aTransit = TransitFactory.createTransitServiceWithAnimal(TRANSIT_ANIMAL);
-
-        assertEquals(aTransit.getAnimal(), TRANSIT_ANIMAL);
     }
     
     @Test
