@@ -3,6 +3,7 @@ package root.model;
 import root.constants.PublicationStatus;
 import root.constants.PublicationType;
 import root.utilities.Entity;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.OneToOne;
@@ -11,13 +12,12 @@ import java.util.List;
 @javax.persistence.Entity
 public class Publication extends Entity {
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
     private Animal animal;
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
     private User user;
 
-    @Column(nullable=false)
     private String location;
 
     @Column(nullable=false)
@@ -29,7 +29,6 @@ public class Publication extends Entity {
     @Column(nullable=false)
     private String publicationAddress;
 
-    @Column(nullable=false)
     private String publicationDescription;
 
     @Column(nullable=false)

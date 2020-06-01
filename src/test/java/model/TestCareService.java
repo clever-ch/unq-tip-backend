@@ -1,15 +1,11 @@
 package model;
 
-import model.factories.AnimalFactory;
-import model.factories.CareFactory;
-import model.factories.TransportFactory;
-import model.factories.UserFactory;
+import factories.CareFactory;
+import factories.UserFactory;
 import org.junit.Test;
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
-import root.model.Animal;
 import root.model.Care;
-import root.model.Transport;
 import root.model.User;
 import static org.junit.Assert.assertEquals;
 
@@ -35,16 +31,6 @@ public class TestCareService {
         Care aCare = CareFactory.createCareServiceWithServiceStatus(CARE_SERVICESTATUS);
 
         assertEquals(aCare.getServiceStatus(), CARE_SERVICESTATUS);
-    }
-
-    @Test
-    public void testTransportServiceHasAnimal(){
-
-        final Animal CARE_ANIMAL = AnimalFactory.anyAnimal();
-
-        Transport aTransport = TransportFactory.createTransportServiceWithAnimal(CARE_ANIMAL);
-
-        assertEquals(aTransport.getAnimal(), CARE_ANIMAL);
     }
     
 
