@@ -76,7 +76,7 @@ public class TestPublication {
     public void hasValidAddress(){
         Publication aPublication = PublicationFactory.createPublicationWithAddress("Mitre");
 
-        assertTrue(aPublication.hasValidPublicationAddress());
+        assertFalse(aPublication.isEmptyPublicationAddress());
     }
 
     @Test
