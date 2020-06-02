@@ -15,7 +15,6 @@ public class Animal extends Entity {
 	private String age;
 	private String breed;
 	
-	@Column(nullable=false)
 	private String description;
 	private String size;	
 	
