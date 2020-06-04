@@ -57,7 +57,7 @@ public class UserController {
 	}
 	
 	//Metodo para validar que el mail este bien escrito
-	private boolean isValidEmail(String email) throws EmailInvalidException {
+	public boolean isValidEmail(String email) throws EmailInvalidException {
 		// Patrón para validar el email
 				Pattern pattern = Pattern
 						.compile("([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z]+)\\.([a-z]+))+");
