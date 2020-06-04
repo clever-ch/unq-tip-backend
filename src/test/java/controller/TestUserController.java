@@ -13,10 +13,12 @@ import modelDTO.UserDTOFactory;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
 
 import root.DTO.PersonDTO;
 import root.DTO.UserDTO;
 import root.controller.UserController;
+import root.controller.exceptions.EmailInvalidException;
 import root.model.User;
 import root.repository.UserRepository;
 
@@ -29,18 +31,32 @@ public class TestUserController {
 	@Mock
 	UserRepository userRepository;
 	
-	@Test
-	public void testUserEmailIsValid() {
-		final String EMAIL = "nico@gmail.com";
+	@Test(expected = EmailInvalidException.class)
+	public void testUserEmailIsNotValid() {
 		
-		assertTrue(userController.isValidEmail(EMAIL));
+		final String USERNAME = "aUserName", PASSWORD = "12345", EMAILWRONG = "ausernamegmal.com";
+		final String NAME = "name", SURNAME = "surname", TELEPHONE = "telephone", ADDRESS = "adress", LOCATION = "location";
+		
+		PersonDTO personDTO = PersonDTOFactory.createPersonComplete(NAME, SURNAME, TELEPHONE, ADDRESS, LOCATION);
+
+		UserDTO newUserDTO = UserDTOFactory.createACompleteUser(USERNAME, EMAILWRONG, PASSWORD, personDTO);
+		
+		when(userController.createUser(newUserDTO)).thenThrow(EmailInvalidException.class);	
+		
 	}
 	
 	@Test
-	public void testUserEmailIsNotValid() {
-		final String EMAILWRONG = "nicogmail.com";
+	public void testUserEmailIsValid() {
+		final String USERNAME = "aUserName", PASSWORD = "12345", EMAILWRONG = "ausername@gmail.com";
+		final String NAME = "name", SURNAME = "surname", TELEPHONE = "telephone", ADDRESS = "adress", LOCATION = "location";
 		
-		assertFalse(userController.isValidEmail(EMAILWRONG));
+		PersonDTO personDTO = PersonDTOFactory.createPersonComplete(NAME, SURNAME, TELEPHONE, ADDRESS, LOCATION);
+
+		UserDTO newUserDTO = UserDTOFactory.createACompleteUser(USERNAME, EMAILWRONG, PASSWORD, personDTO);
+		
+		ResponseEntity<User> result = userController.createUser(newUserDTO);
+		
+		assertEquals(result.getBody().getEmail(), newUserDTO.Email);
 	}
 	
 	@Test
