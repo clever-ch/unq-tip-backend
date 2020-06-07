@@ -1,5 +1,6 @@
 package root.model;
 
+import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import root.constants.AnimalType;
@@ -8,10 +9,12 @@ import root.utilities.Entity;
 @javax.persistence.Entity
 public class Animal extends Entity {
 	
+	@Column(nullable=false)
 	@Enumerated(EnumType.ORDINAL)
 	private AnimalType animalType;
 	private String age;
 	private String breed;
+	
 	private String description;
 	private String size;	
 	

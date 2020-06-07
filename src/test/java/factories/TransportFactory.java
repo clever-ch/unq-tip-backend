@@ -1,8 +1,7 @@
-package model.factories;
+package factories;
 
 import root.constants.ServiceStatus;
 import root.constants.UnidOfTime;
-import root.model.Animal;
 import root.model.Transport;
 import root.model.User;
 
@@ -12,12 +11,11 @@ public class TransportFactory {
         return new Transport();
     }
 
-    public static Transport createCompleteTransportService(User aUser, ServiceStatus aServiceStatus, Animal aAnimal, String aDescription,
+    public static Transport createCompleteTransportService(User aUser, ServiceStatus aServiceStatus, String aDescription,
                                                 UnidOfTime aUnidOfTime, int scheduleAvailable){
         Transport aTransportService = new Transport();
         aTransportService.setUser(aUser);
         aTransportService.setServiceStatus(aServiceStatus);
-        aTransportService.setAnimal(aAnimal);
         aTransportService.setDescription(aDescription);
         aTransportService.setUnidOfTime(aUnidOfTime);
         aTransportService.setScheduleAvailable(scheduleAvailable);
@@ -35,13 +33,6 @@ public class TransportFactory {
     public static Transport createTransportServiceWithServiceStatus(ServiceStatus aServiceStatus){
         Transport aTransportService = new Transport();
         aTransportService.setServiceStatus(aServiceStatus);
-
-        return aTransportService;
-    }
-
-    public static Transport createTransportServiceWithAnimal(Animal aAnimal){
-        Transport aTransportService = new Transport();
-        aTransportService.setAnimal(aAnimal);
 
         return aTransportService;
     }

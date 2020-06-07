@@ -17,9 +17,6 @@ public abstract class Service extends Entity {
 	@Enumerated(EnumType.STRING)
 	private ServiceStatus serviceStatus;
 	
-	@OneToOne
-	private Animal animal;
-	
 	private String description;
 	
 	@Enumerated(EnumType.STRING)
@@ -40,14 +37,6 @@ public abstract class Service extends Entity {
 
 	public void setServiceStatus(ServiceStatus serviceStatus) {
 		this.serviceStatus = serviceStatus;
-	}
-
-	public Animal getAnimal() {
-		return animal;
-	}
-
-	public void setAnimal(Animal animal) {
-		this.animal = animal;
 	}
 
 	public User getUser() {

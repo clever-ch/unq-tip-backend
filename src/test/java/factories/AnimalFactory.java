@@ -1,4 +1,4 @@
-package model.factories;
+package factories;
 
 import root.constants.AnimalType;
 import root.model.Animal;

@@ -81,4 +81,5 @@ public class User extends Entity {
 	private boolean isEmptyUsername() {
 		return this.userName == null | this.userName == "";
 	}
+
 }

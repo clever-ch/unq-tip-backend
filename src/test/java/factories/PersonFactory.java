@@ -1,4 +1,4 @@
-package model.factories;
+package factories;
 
 import root.model.Person;
 
