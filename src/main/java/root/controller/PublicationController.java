@@ -190,7 +190,7 @@ public class PublicationController {
 		Animal animal = new Animal();
 		
 		//Controlo que los campos importantes no lleguen null
-		if((animalDTO.AnimalType != null) && (animalDTO.Breed != null) && (animalDTO.AnimalAge != null)) {
+		if(this.isValidAnimalDTO(animalDTO)) {
 		animal.setAnimalType(animalDTO.AnimalType);
 		animal.setBreed(animalDTO.Breed);
 		animal.setAge(animalDTO.AnimalAge);
@@ -200,5 +200,11 @@ public class PublicationController {
 		animal.setSize(animalDTO.AnimalSize);
 		
 		return animal;
+	}
+
+	private boolean isValidAnimalDTO(AnimalDTO animalDTO) {
+		return (animalDTO.AnimalAge != "" & animalDTO.AnimalAge != null) &
+				(animalDTO.Breed != "" & animalDTO.Breed != null) &
+				(animalDTO.AnimalType != null);
 	}
 }

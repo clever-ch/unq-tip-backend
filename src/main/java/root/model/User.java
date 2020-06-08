@@ -3,10 +3,7 @@ package root.model;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToOne;
 
-import root.controller.exceptions.EmailInvalidException;
 import root.utilities.Entity;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @javax.persistence.Entity
 public class User extends Entity {
