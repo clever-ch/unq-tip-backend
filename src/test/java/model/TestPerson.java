@@ -6,6 +6,7 @@ import root.model.Person;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestPerson {
 
@@ -54,9 +55,17 @@ public class TestPerson {
 
         final String PERSON_LOCATION = "Location";
 
-        Person anyAccount = PersonFactory.createPersonWithLocation(PERSON_LOCATION);
+        Person anyPerson = PersonFactory.createPersonWithLocation(PERSON_LOCATION);
 
-        assertEquals(anyAccount.getLocation(), PERSON_LOCATION);
+        assertEquals(anyPerson.getLocation(), PERSON_LOCATION);
+    }
+    
+    @Test
+    public void testIsValidPerson() {
+    	
+    	Person anyPerson = PersonFactory.createPersonComplete("Carlos", "Perez", "12345", "Mitre", "Berazategui");
+    	
+    	assertTrue(anyPerson.isValidPerson());
     }
 
 }

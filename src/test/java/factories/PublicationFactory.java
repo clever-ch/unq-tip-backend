@@ -74,8 +74,8 @@ public class PublicationFactory {
     	
     	Animal animal = AnimalFactory.createCompleteAnimal(AnimalType.BIRD, "", "", "", "");
     	Person person = PersonFactory.createPersonComplete("", "", "", "", "");
-    	User user = UserFactory.createACompleteUser("", "", person);
-    	
+    	User user = UserFactory.createACompleteUser("", "", "", person);
+
     	Publication newPublication = new Publication();
         newPublication.setPublicationType(type);
         newPublication.setAnimal(animal);

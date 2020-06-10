@@ -24,8 +24,8 @@ public class PublicationDTOFactory {
 		
 		AnimalDTO animalDTO = AnimalDTOFactory.createCompleteAnimal(AnimalType.BIRD, "", "", "", "");
 		PersonDTO personDTO = PersonDTOFactory.createPersonComplete("", "", "", "", "");
-		UserDTO userDTO = UserDTOFactory.createACompleteUser("", "", personDTO);
-		
+		UserDTO userDTO = UserDTOFactory.createACompleteUser("", "", "", personDTO);
+
 		PublicationDTO newPublication = new PublicationDTO();
         newPublication.PublicationType = type;
         newPublication.AnimalDTO = animalDTO; 

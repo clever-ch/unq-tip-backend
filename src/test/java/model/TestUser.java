@@ -7,6 +7,7 @@ import root.model.Person;
 import root.model.User;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestUser {
 
@@ -36,5 +37,14 @@ public class TestUser {
         User anyUser = UserFactory.createAUserWithAccount(aAccount);
 
         assertEquals(anyUser.getPerson(), aAccount);
+    }
+    
+    @Test
+    public void testIsValidUser() {
+    	Person anyPerson = PersonFactory.createPersonComplete("Carlos", "Perez", "12345", "Mitre", "Berazategui");
+    	
+    	User anyUser = UserFactory.createACompleteUser("Pepe", "pepe@gmail.com", "123456", anyPerson);
+    	
+    	assertTrue(anyUser.isValidUser());
     }
 }

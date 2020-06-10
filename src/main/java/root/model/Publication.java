@@ -34,7 +34,8 @@ public class Publication extends Entity {
 
     @Column(nullable=false)
     private String publicationAddress;
-
+    
+    @Column(nullable=false)
     private String publicationDescription;
 
     @Column(nullable=false)
@@ -51,7 +52,7 @@ public class Publication extends Entity {
                 & hasAPublicationType()
                 & hasAPublicationStatus()
                 & hasValidLocation()
-                & hasValidPublicationAddress()
+                & !isEmptyPublicationAddress()
                 & !isEmptyPublicationDescription();
     }
 
@@ -75,8 +76,8 @@ public class Publication extends Entity {
         return this.location != "" | this.location != null;
     }
 
-    public boolean hasValidPublicationAddress() {
-        return this.publicationAddress != "" | this.publicationAddress != null;
+    public boolean isEmptyPublicationAddress() {
+        return this.publicationAddress == "" | this.publicationAddress == null;
     }
 
     public boolean isEmptyPublicationDescription() {

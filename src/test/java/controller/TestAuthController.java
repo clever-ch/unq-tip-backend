@@ -59,11 +59,12 @@ public class TestAuthController {
 		final String USERNAME = "aUserName", PASSWORD = "", USERGUID = "aUserGuid", EMAIL = "";
 		
 		Person person = PersonFactory.anyPerson();
-		User existingUser = UserFactory.createACompleteUser(USERNAME, EMAIL, person);
+
+		User existingUser = UserFactory.createACompleteUser(USERNAME, EMAIL, PASSWORD, person);
 		
 		PersonDTO personDTO = PersonDTOFactory.anyPersonDTO();
-		UserDTO existingUserDTO = UserDTOFactory.createACompleteUser(USERNAME, PASSWORD, personDTO);
-		
+		UserDTO existingUserDTO = UserDTOFactory.createACompleteUser(USERNAME, EMAIL, PASSWORD, personDTO);
+
 		when(userRepository.findUserByUserGuid(USERGUID)).thenReturn(existingUser);
 		
 		ResponseEntity<UserDTO> result = authController.getUserByGuid(USERGUID);

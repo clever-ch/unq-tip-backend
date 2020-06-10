@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,8 @@ import root.DTO.PersonDTO;
 import root.DTO.PublicationDTO;
 import root.DTO.UserDTO;
 import root.constants.PublicationStatus;
+import root.controller.exceptions.AnimalInvalidException;
+import root.controller.exceptions.InvalidPublicationException;
 import root.model.Animal;
 import root.model.Person;
 import root.model.Publication;
@@ -131,12 +134,14 @@ public class PublicationController {
 	}
 	
 	@PostMapping("/createPublication")
-	public Publication createPublication(@Valid @RequestBody PublicationDTO publicationDTO) {
-		System.out.println("Llegue al controler");
+	public ResponseEntity<Publication> createPublication(@Valid @RequestBody PublicationDTO publicationDTO) {
 		
 		Publication publication = ConvertPublicationDTOToPublication(publicationDTO);
 		
-		return publicationRepository.save(publication);
+		if(publication.isValidPublication()) {
+			publicationRepository.save(publication);
+			return ResponseEntity.ok(publication);
+		} else throw new InvalidPublicationException("Publicación incompleta");
 	}
 
 	private Publication ConvertPublicationDTOToPublication(PublicationDTO publicationDTO) {
@@ -179,12 +184,23 @@ public class PublicationController {
 
 	private Animal ConvertAnimalDToToAnimal(AnimalDTO animalDTO) {
 		Animal animal = new Animal();
-		animal.setAge(animalDTO.AnimalAge);
+		
+		//Controlo que los campos importantes no lleguen null
+		if(this.isValidAnimalDTO(animalDTO)) {
 		animal.setAnimalType(animalDTO.AnimalType);
 		animal.setBreed(animalDTO.Breed);
+		animal.setAge(animalDTO.AnimalAge);
+		} else throw new AnimalInvalidException();
+
 		animal.setDescription(animalDTO.AnimalDescription);
 		animal.setSize(animalDTO.AnimalSize);
 		
 		return animal;
+	}
+
+	private boolean isValidAnimalDTO(AnimalDTO animalDTO) {
+		return (animalDTO.AnimalAge != "" & animalDTO.AnimalAge != null) &
+				(animalDTO.Breed != "" & animalDTO.Breed != null) &
+				(animalDTO.AnimalType != null);
 	}
 }
