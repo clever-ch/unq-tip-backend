@@ -16,7 +16,7 @@ public class Animal extends Entity {
 	private String breed;
 	
 	private String description;
-	private String size;	
+	private String size;
 	
 	public String getBreed() {
 		return breed;

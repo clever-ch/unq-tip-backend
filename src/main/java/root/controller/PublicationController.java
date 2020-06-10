@@ -2,9 +2,7 @@ package root.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import root.DTO.AnimalDTO;
 import root.DTO.PersonDTO;
 import root.DTO.PublicationDTO;
@@ -145,7 +142,6 @@ public class PublicationController {
 			publicationRepository.save(publication);
 			return ResponseEntity.ok(publication);
 		} else throw new InvalidPublicationException("Publicación incompleta");
-		
 	}
 
 	private Publication ConvertPublicationDTOToPublication(PublicationDTO publicationDTO) {
@@ -195,7 +191,7 @@ public class PublicationController {
 		animal.setBreed(animalDTO.Breed);
 		animal.setAge(animalDTO.AnimalAge);
 		} else throw new AnimalInvalidException();
-		
+
 		animal.setDescription(animalDTO.AnimalDescription);
 		animal.setSize(animalDTO.AnimalSize);
 		
