@@ -6,7 +6,11 @@ import root.utilities.Entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import java.util.Date;
 import java.util.List;
 
 @javax.persistence.Entity
@@ -15,6 +19,8 @@ public class Publication extends Entity {
 	@OneToOne(cascade=CascadeType.ALL)
     private Animal animal;
 
+	//@ManyToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name="USER_ID")
 	@OneToOne(cascade=CascadeType.ALL)
     private User user;
 
@@ -34,6 +40,10 @@ public class Publication extends Entity {
     @Column(nullable=false)
     @ElementCollection
     private List<String> photos;
+    
+    //@Column(nullable=false)	Agregar para que no sea null y adecuar creación publicacion. Esto se setea desde código no por pantalla
+    //private Date creationDate;
+    
 
     public boolean isValidPublication() {
         return !isEmptyAnimal()
