@@ -1,6 +1,9 @@
 package root.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import root.utilities.Entity;
 
@@ -11,6 +14,9 @@ public class User extends Entity {
 	private String password;
 	private String userGuid;
 	private String userName;
+	
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+	private List<Publication> publicaciones;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	private Person person;
