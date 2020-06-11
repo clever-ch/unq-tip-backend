@@ -10,6 +10,7 @@ public class UserFactory {
     }
 
     public static User createACompleteUser(String userName, String email, String pass, Person person){
+
         User newUser = new User();
         newUser.setUserName(userName);
         newUser.setPassword(pass);

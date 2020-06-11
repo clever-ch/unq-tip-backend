@@ -2,18 +2,16 @@ package root.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import root.DTO.AnimalDTO;
 import root.DTO.PersonDTO;
 import root.DTO.PublicationDTO;
@@ -145,7 +143,6 @@ public class PublicationController {
 			publicationRepository.save(publication);
 			return ResponseEntity.ok(publication);
 		} else throw new InvalidPublicationException("Publicación incompleta");
-		
 	}
 
 	private Publication ConvertPublicationDTOToPublication(PublicationDTO publicationDTO) {
@@ -195,7 +192,7 @@ public class PublicationController {
 		animal.setBreed(animalDTO.Breed);
 		animal.setAge(animalDTO.AnimalAge);
 		} else throw new AnimalInvalidException();
-		
+
 		animal.setDescription(animalDTO.AnimalDescription);
 		animal.setSize(animalDTO.AnimalSize);
 		
@@ -207,4 +204,31 @@ public class PublicationController {
 				(animalDTO.Breed != "" & animalDTO.Breed != null) &
 				(animalDTO.AnimalType != null);
 	}
+	
+	@GetMapping("/allUserPublicationsLost/{id}")
+	public List<PublicationDTO> GetAllPublicationsLostByIdUser(@PathVariable(value = "id") Long idUser) {
+		
+		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
+		List<Publication> publications = publicationRepository.findAllPublicationsLostIdUser(idUser);
+		
+		for (Publication publication : publications) {
+				publicationsDTO.add(ConvertPublicationToPublicationDTO(publication));
+		}
+		
+		return publicationsDTO;
+	}
+	
+	@GetMapping("/allUserPublicationsFound/{id}")
+	public List<PublicationDTO> GetAllPublicationsFoundByIdUser(@PathVariable(value = "id") Long idUser) {
+		
+		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
+		List<Publication> publications = publicationRepository.findAllPublicationsFoundByIdUser(idUser);
+		
+		for (Publication publication : publications) {
+				publicationsDTO.add(ConvertPublicationToPublicationDTO(publication));
+		}
+		
+		return publicationsDTO;
+	}
+
 }

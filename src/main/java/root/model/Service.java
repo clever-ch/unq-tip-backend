@@ -1,7 +1,6 @@
 package root.model;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import root.constants.ServiceStatus;
@@ -14,12 +13,12 @@ public abstract class Service extends Entity {
 	@OneToOne
 	private User user;
 	
-	@Enumerated(EnumType.STRING)
+	@Column(nullable=false)
 	private ServiceStatus serviceStatus;
 	
 	private String description;
 	
-	@Enumerated(EnumType.STRING)
+	@Column(nullable=false)
 	private UnidOfTime unidOfTime;
 
 	
