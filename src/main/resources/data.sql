@@ -75,9 +75,11 @@ insert into PUBLICATION_PHOTOS values (7, 'https://firebasestorage.googleapis.co
 --Sección Servicios de Tranporte
  insert into TRANSPORT values (1, 'Servicio de Transporte de mascotas por Hora By PGonzales01', 1, 0, 2, 2);
  insert into TRANSPORT values (2, 'Servicio de Transporte de mascotas por Día By LuisGonzales01', 1, 1, 3, 5);
+ insert into TRANSPORT values (3, 'Servicio de Transporte de mascotas por Día By PepePer01', 1, 1, 3, 1);
  
  
  --Sección Servicios de Tránsito
  insert into TRANSIT values (1, 'Servicio de Tránsito de mascotas por Día By JGarcia01', 1, 1, 4, 3);
  insert into TRANSIT values (2, 'Servicio de Tránsito de mascotas por Semana By Rsmith', 1, 2, 2, 6);
+ insert into TRANSIT values (3, 'Servicio de Tránsito de mascotas por Semana By PepePer01', 1, 2, 2, 1);
  -----------------------------------------------------------------------------------------------------------------------------------------------------------
