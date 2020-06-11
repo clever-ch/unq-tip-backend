@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import root.DTO.CareDTO;
@@ -127,5 +128,44 @@ public class PrestacionController {
 		transportDTO.ScheduleAvailable = transport.getScheduleAvailable();
 		
 		return transportDTO;
+	}
+
+	@GetMapping("/allUserCareServices/{id}")
+	public List<CareDTO> getAllCareServicesByIdUser(@PathVariable(value = "id") Long idUser) {
+		
+		List<Care> cares = prestacionRepository.findAllCareServicesByIdUser(idUser);
+		List<CareDTO> caresDTO = new ArrayList<CareDTO>();
+		
+		for (Care care : cares) {
+			caresDTO.add(ConvertCareToCareDTO(care));
+		}
+		
+		return caresDTO;
+	}
+	
+	@GetMapping("/allUserTransitServices/{id}")
+	public List<TransitDTO> getAllTransitServicesByIdUser(@PathVariable(value = "id") Long idUser) {
+		
+		List<Transit> listOfTransit = prestacionRepository.findAllTransitServicesByIdUser(idUser);
+		List<TransitDTO> listOfTransitDTO = new ArrayList<TransitDTO>();
+		
+		for (Transit transit : listOfTransit) {
+			listOfTransitDTO.add(ConvertTransitToTransitDTO(transit));
+		}
+		
+		return listOfTransitDTO;
+	}
+	
+	@GetMapping("/allUserTransportServices/{id}")
+	public List<TransportDTO> getAllTransportServicesByIdUser(@PathVariable(value = "id") Long idUser) {
+		
+		List<Transport> transports = prestacionRepository.findAllTransportServicesByIdUser(idUser);
+		List<TransportDTO> transportsDTO = new ArrayList<TransportDTO>();
+		
+		for (Transport transport : transports) {
+			transportsDTO.add(ConvertTransportToTransportDTO(transport));
+		}
+		
+		return transportsDTO;
 	}
 }
