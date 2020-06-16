@@ -137,12 +137,19 @@ public class PublicationController {
 	@PostMapping("/createPublication")
 	public ResponseEntity<Publication> createPublication(@Valid @RequestBody PublicationDTO publicationDTO) {
 		
+		long idUsuario = publicationDTO.UserDTO.Id;		
 		Publication publication = ConvertPublicationDTOToPublication(publicationDTO);
 		
 		if(publication.isValidPublication()) {
-			publicationRepository.save(publication);
+			SaveOrUpdatePublication(idUsuario, publication);
 			return ResponseEntity.ok(publication);
 		} else throw new InvalidPublicationException("Publicación incompleta");
+	}
+
+	private void SaveOrUpdatePublication(long idUsuario, Publication publication) {
+		publicationRepository.save(publication);
+		Publication lastPublication = publicationRepository.getLastPublicationCreated();
+		publicationRepository.updateUser(idUsuario, lastPublication.getId());
 	}
 
 	private Publication ConvertPublicationDTOToPublication(PublicationDTO publicationDTO) {
@@ -156,7 +163,7 @@ public class PublicationController {
 		
 		publication.setPublicationStatus(PublicationStatus.ACTIVE);
 		publication.setAnimal(ConvertAnimalDToToAnimal(publicationDTO.AnimalDTO));
-		publication.setUser(ConvertUserDTOToUser(publicationDTO.UserDTO));
+		//publication.setUser(ConvertUserDTOToUser(publicationDTO.UserDTO));
 		
 		return publication;
 	}
