@@ -6,11 +6,7 @@ import root.utilities.Entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import java.util.Date;
 import java.util.List;
 
 @javax.persistence.Entity
@@ -48,7 +44,7 @@ public class Publication extends Entity {
 
     public boolean isValidPublication() {
         return !isEmptyAnimal()
-                & !isEmptyUser()
+                //& !isEmptyUser()
                 & hasAPublicationType()
                 & hasAPublicationStatus()
                 & hasValidLocation()
