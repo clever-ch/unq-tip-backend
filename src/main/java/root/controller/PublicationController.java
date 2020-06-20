@@ -149,7 +149,7 @@ public class PublicationController {
 	private void SaveOrUpdatePublication(long idUsuario, Publication publication) {
 		publicationRepository.save(publication);
 		Publication lastPublication = publicationRepository.getLastPublicationCreated();
-		publicationRepository.updateUser(idUsuario, lastPublication.getId());
+		publicationRepository.updateIdUserInPublication(idUsuario, lastPublication.getId());
 	}
 
 	private Publication ConvertPublicationDTOToPublication(PublicationDTO publicationDTO) {
