@@ -44,7 +44,7 @@ public class Publication extends Entity {
 
     public boolean isValidPublication() {
         return !isEmptyAnimal()
-                //& !isEmptyUser()
+                //& !isEmptyUser()		//Se saca validación a modo parche por el problema con la persistencia donde se duplican los registros
                 & hasAPublicationType()
                 & hasAPublicationStatus()
                 & hasValidLocation()
