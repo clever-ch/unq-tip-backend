@@ -64,13 +64,14 @@ public class User extends Entity {
 	public boolean isValidUser() {
 		return !isEmptyUsername()
                 & !isEmptyEmail()
-                & !isEmptyPassword()
-                & hasAPersonComplete();
+                & !isEmptyPassword();
+                //& hasAPersonComplete();
 	}
 
-	private boolean hasAPersonComplete() {
+	//Aclaración: Se saca validación a modo parche por el problema con la persistencia donde se duplican los registros
+	/*private boolean hasAPersonComplete() {
 		return this.person.isValidPerson();
-	}
+	}*/
 
 	private boolean isEmptyEmail() {
 		return this.email == null | this.email == "" ;
