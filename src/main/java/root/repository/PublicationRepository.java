@@ -32,5 +32,5 @@ public interface PublicationRepository extends JpaRepository<Publication, Long>{
 	@Transactional
 	@Modifying
 	@Query("update Publication p set p.user.id = ?1 where p.id = ?2")
-	void updateUser(Long idUser, Long idPublicacion);
+	void updateIdUserInPublication(Long idUser, Long idPublicacion);
 }
