@@ -4,19 +4,15 @@ import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import root.DTO.PersonDTO;
 import root.DTO.UserDTO;
 import root.controller.exceptions.EmailAlreadyCreatedException;
@@ -25,6 +21,7 @@ import root.controller.exceptions.UserAlreadyCreatedExceptions;
 import root.exceptions.InvalidUserException;
 import root.model.Person;
 import root.model.User;
+import root.repository.PersonRepository;
 import root.repository.UserRepository;
 
 
@@ -35,6 +32,9 @@ public class UserController {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private PersonRepository personRepository;
 	
 	@PostMapping("/createUser")
 	public ResponseEntity<User> createUser(@Valid @RequestBody UserDTO userDTO) throws EmailAlreadyCreatedException, UserAlreadyCreatedExceptions {
@@ -97,13 +97,10 @@ public class UserController {
 		return person;
 	}
 	
-	@PutMapping("/editProfile/{guid}")
-	public ResponseEntity<User> editProfile(@PathVariable(value = "guid") String guid,
-			@Valid @RequestBody UserDTO userDTO) {
+	@PutMapping("/editProfile")
+	public ResponseEntity<User> editProfile(@Valid @RequestBody UserDTO userDTO) {
 		
-		
-		User user = userRepository.findUserByUserGuid(guid);
-		Person person = ConvertPersonDTOToPerson(userDTO.PersonDTO);
+		User user = userRepository.findUserByUserGuid(userDTO.UserGuid);
 		
 		//Controlo que el mail sea valido antes de hacer el save
 		if(isValidEmail(userDTO.Email)) {
@@ -112,11 +109,20 @@ public class UserController {
 	
 		user.setUserName(userDTO.UserName);
 		user.setPassword(userDTO.Password);
-		user.setPerson(person);
+		user.setPerson(null);				//Se setea en null para no pisar la persona en el update
 		
 		if (user.isValidUser()){
-			userRepository.save(user);
+			SaveOrUpdateUser(userDTO, user);			
 			return ResponseEntity.ok(user);
 		} else throw new InvalidUserException("Usuario incompleto");
+	}
+
+	private void SaveOrUpdateUser(UserDTO userDTO, User user) {
+		
+		personRepository.updatePersonWithParameters(userDTO.PersonDTO.Address, userDTO.PersonDTO.Location, userDTO.PersonDTO.Name,
+														userDTO.PersonDTO.SurName, userDTO.PersonDTO.Telephone, userDTO.PersonDTO.Id);
+		
+		userRepository.save(user);
+		userRepository.updateIdPersonInUser(userDTO.PersonDTO.Id, user.getId());
 	}
 }
