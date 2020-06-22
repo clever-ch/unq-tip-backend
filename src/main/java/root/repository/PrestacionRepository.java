@@ -29,4 +29,7 @@ public interface PrestacionRepository extends JpaRepository<Service, Long>{
 	
 	@Query("select t from Transport t where t.user.id = ?1")
 	List<Transport> findAllTransportServicesByIdUser(Long idUser);
+	
+	@Query("select t from Transit t where t.id = ?1")
+	Transit findServiceByIdService(Long idService);
 }

@@ -1,5 +1,6 @@
 package root.controller;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ import root.DTO.PersonDTO;
 import root.DTO.TransitDTO;
 import root.DTO.TransportDTO;
 import root.DTO.UserDTO;
+import root.constants.TypeService;
 import root.model.Care;
 import root.model.Person;
+import root.model.Service;
 import root.model.Transit;
 import root.model.Transport;
 import root.model.User;
@@ -46,7 +49,7 @@ public class PrestacionController {
 		CareDTO careDTO = new CareDTO();
 		careDTO.Id = care.getId();
 		careDTO.UserDTO = ConvertUserToUserDTO(care.getUser());
-		
+		careDTO.TypeService = care.getTypeService();
 		careDTO.ServiceDescription = care.getDescription();
 		careDTO.ServiceStatus = care.getServiceStatus();
 		careDTO.UnidOfTime = care.getUnidOfTime();
@@ -96,6 +99,7 @@ public class PrestacionController {
 		transitDTO.Id = transit.getId();
 		transitDTO.UserDTO = ConvertUserToUserDTO(transit.getUser());
 		
+		transitDTO.TypeService = transit.getTypeService();
 		transitDTO.ServiceDescription = transit.getDescription();
 		transitDTO.ServiceStatus = transit.getServiceStatus();
 		transitDTO.UnidOfTime = transit.getUnidOfTime();
@@ -122,6 +126,7 @@ public class PrestacionController {
 		transportDTO.Id = transport.getId();
 		transportDTO.UserDTO = ConvertUserToUserDTO(transport.getUser());
 		
+		transportDTO.TypeService = transport.getTypeService();
 		transportDTO.ServiceDescription = transport.getDescription();
 		transportDTO.ServiceStatus = transport.getServiceStatus();
 		transportDTO.UnidOfTime = transport.getUnidOfTime();
@@ -167,5 +172,14 @@ public class PrestacionController {
 		}
 		
 		return transportsDTO;
+	}
+	
+	@GetMapping("/service/Transit/{id}")
+	public Transit getServiceByIdAndTypeService(@PathVariable(value = "id") Long idService) {
+		
+		Transit serviceTransit = prestacionRepository.findServiceByIdService(idService);
+		System.out.println(serviceTransit.getDescription());
+		
+		return serviceTransit;
 	}
 }

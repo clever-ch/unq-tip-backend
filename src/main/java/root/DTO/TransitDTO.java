@@ -1,6 +1,7 @@
 package root.DTO;
 
 import root.constants.ServiceStatus;
+import root.constants.TypeService;
 import root.constants.UnidOfTime;
 
 public class TransitDTO {
@@ -12,4 +13,5 @@ public class TransitDTO {
 	public ServiceStatus ServiceStatus;
 	public UnidOfTime UnidOfTime;
 	public int TransitTime;
+	public TypeService TypeService;
 }

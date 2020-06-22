@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import root.constants.ServiceStatus;
+import root.constants.TypeService;
 import root.constants.UnidOfTime;
 import root.utilities.Entity;
 
@@ -20,8 +21,19 @@ public abstract class Service extends Entity {
 	
 	@Column(nullable=false)
 	private UnidOfTime unidOfTime;
+	
+	@Column(nullable=false)
+	private TypeService typeService;
 
 	
+	public TypeService getTypeService() {
+		return typeService;
+	}
+
+	public void setTypeService(TypeService typeService) {
+		this.typeService = typeService;
+	}
+
 	public String getDescription() {
 		return description;
 	}
