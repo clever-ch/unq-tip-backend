@@ -150,9 +150,9 @@ public class PrestacionController {
 	@PutMapping("/editService/Transit")
 	public ResponseEntity<Transit> updateTransitService(@Valid @RequestBody TransitDTO serv) {
 		
-		Transit updateTransit = prestacionRepository.findTransitServiceByIdService(serv.Id);
-		
 		if(serv.isValidService()) {
+			
+			Transit updateTransit = prestacionRepository.findTransitServiceByIdService(serv.Id);
 
 			updateTransit.setDescription(serv.ServiceDescription);
 			updateTransit.setUnidOfTime(serv.UnidOfTime);
@@ -168,10 +168,9 @@ public class PrestacionController {
 	@PutMapping("/editService/Transport")
 	public ResponseEntity<Transport> updateTransportService(@Valid @RequestBody TransportDTO serv){
 		
-
-		Transport updateTransport = prestacionRepository.findTransportServiceByIdService(serv.Id);
-
 		if(serv.isValidService()) {
+			
+			Transport updateTransport = prestacionRepository.findTransportServiceByIdService(serv.Id);
 
 			updateTransport.setDescription(serv.ServiceDescription);
 			updateTransport.setUnidOfTime(serv.UnidOfTime);
@@ -186,10 +185,10 @@ public class PrestacionController {
 	@PutMapping("/editService/Care")
 	public ResponseEntity<Care> updateCareService(@Valid @RequestBody CareDTO serv){
 
-		Care updateCare = prestacionRepository.findCareServiceByIdService(serv.Id);
-		
 		if(serv.isValidService()) {
-
+			
+			Care updateCare = prestacionRepository.findCareServiceByIdService(serv.Id);
+			
 			updateCare.setDescription(serv.ServiceDescription);
 			updateCare.setUnidOfTime(serv.UnidOfTime);
 			updateCare.setCareTime(serv.CareTime);

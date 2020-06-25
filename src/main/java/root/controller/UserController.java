@@ -99,27 +99,4 @@ public class UserController {
 		userRepository.updateIdPersonInUser(userDTO.PersonDTO.Id, user.getId());
 	}
 	
-	@PutMapping("/editProfile/{guid}")
-	public ResponseEntity<User> editProfile(@PathVariable(value = "guid") String guid,
-			@Valid @RequestBody UserDTO userDTO) {
-		
-		
-		User user = userRepository.findUserByUserGuid(guid);
-		Person person = PersonTransformer.ConvertPersonDTOToPerson(userDTO.PersonDTO);
-		
-		//Controlo que el mail sea valido antes de hacer el save
-		if(isValidEmail(userDTO.Email)) {
-					user.setEmail(userDTO.Email);
-				} else throw new EmailInvalidException();
-	
-		user.setUserName(userDTO.UserName);
-		user.setPassword(userDTO.Password);
-		user.setPerson(person);
-		
-		if (user.isValidUser()){
-			userRepository.save(user);
-			return ResponseEntity.ok(user);
-		} else throw new InvalidUserException("Usuario incompleto");
-	}
-
 }
