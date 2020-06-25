@@ -16,6 +16,17 @@ public class UserTransformer {
 		
 		return user;
 	}
+	
+	public static UserDTO ConvertUserToUserDTO(User user) {
+		UserDTO userDTO = new UserDTO();
+		userDTO.Email = user.getEmail();
+		userDTO.Password = user.getPassword();
+		userDTO.UserName = user.getUserName();
+		userDTO.UserGuid = user.getUserGuid();
+		userDTO.PersonDTO = PersonTransformer.ConvertPersonToPersonDTO(user.getPerson());
+		
+		return userDTO;
+	}
 
 	public static UserDTO GetUserDTOByPublication(Publication publication)
 	{

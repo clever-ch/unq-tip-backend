@@ -14,4 +14,22 @@ public class TransportDTO {
 	public UnidOfTime UnidOfTime;
 	public int ScheduleAvailable;
 	public TypeService TypeService;
+	
+	public boolean isValidService() {
+		return hasDescription() &
+				hasUnidOfTime() &
+				hasScheduleAvailable();
+	}
+	
+	private boolean hasDescription() {
+		return this.ServiceDescription != "" & this.ServiceDescription != null;
+	}
+
+	private boolean hasUnidOfTime() {
+		return this.UnidOfTime != null;
+	}
+
+	private boolean hasScheduleAvailable() {
+		return this.ScheduleAvailable != 0;
+	}
 }

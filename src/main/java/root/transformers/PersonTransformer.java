@@ -29,4 +29,17 @@ public class PersonTransformer {
 		
 		return personDTO;
 	}
+	
+	public static PersonDTO ConvertPersonToPersonDTO(Person pers) {
+		
+		PersonDTO personDTO = new PersonDTO();
+		
+		personDTO.Address = pers.getAddress();
+		personDTO.Location = pers.getLocation();
+		personDTO.Name = pers.getName();
+		personDTO.SurName = pers.getSurName();
+		personDTO.Telephone = pers.getTelephone();
+		
+		return personDTO;
+	}
 }

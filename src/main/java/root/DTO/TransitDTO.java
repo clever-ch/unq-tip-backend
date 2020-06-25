@@ -14,4 +14,22 @@ public class TransitDTO {
 	public UnidOfTime UnidOfTime;
 	public int TransitTime;
 	public TypeService TypeService;
+	
+	public boolean isValidService() {
+		return hasDescription() &
+				hasUnidOfTime() &
+				hasTransitTime();
+	}
+	
+	private boolean hasDescription() {
+		return this.ServiceDescription != "" & this.ServiceDescription != null;
+	}
+
+	private boolean hasUnidOfTime() {
+		return this.UnidOfTime != null;
+	}
+
+	private boolean hasTransitTime() {
+		return this.TransitTime != 0;
+	}
 }

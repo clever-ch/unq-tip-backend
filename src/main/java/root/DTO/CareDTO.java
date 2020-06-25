@@ -14,4 +14,23 @@ public class CareDTO {
 	public UnidOfTime UnidOfTime;
 	public int CareTime;
 	public TypeService TypeService;
+	
+	public boolean isValidService() {
+		return hasDescription() &
+				hasUnidOfTime() &
+				hasCareTime();
+	}
+	
+	private boolean hasDescription() {
+		return this.ServiceDescription != "" & this.ServiceDescription != null;
+	}
+
+	private boolean hasUnidOfTime() {
+		return this.UnidOfTime != null;
+	}
+
+	private boolean hasCareTime() {
+		return this.CareTime != 0;
+	}
+
 }
