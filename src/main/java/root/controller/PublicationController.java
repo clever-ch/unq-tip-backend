@@ -17,6 +17,7 @@ import root.DTO.PublicationDTO;
 import root.constants.PublicationStatus;
 import root.controller.exceptions.AnimalInvalidException;
 import root.controller.exceptions.InvalidPublicationException;
+import root.controller.exceptions.WithoutPublicationsException;
 import root.model.Publication;
 import root.repository.PublicationRepository;
 import root.transformers.PublicationTransformer;
@@ -112,12 +113,14 @@ public class PublicationController {
 		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
 		List<Publication> publications = publicationRepository.findAllPublicationsLostIdUser(idUser);
 		
-		for (Publication publication : publications) {
+		if(publications.size() != 0)
+		{
+			for (Publication publication : publications) {
 				publicationsDTO.add(PublicationTransformer.ConvertPublicationToPublicationDTO(publication));
-		}
-		
-		return publicationsDTO;
-	}
+				}
+			return publicationsDTO;
+		} else throw new WithoutPublicationsException("No hay publicaciones en mascotas perdidas");
+	 }
 	
 	@GetMapping("/allUserPublicationsFound/{id}")
 	public List<PublicationDTO> GetAllPublicationsFoundByIdUser(@PathVariable(value = "id") Long idUser) {
@@ -125,10 +128,13 @@ public class PublicationController {
 		List<PublicationDTO> publicationsDTO = new ArrayList<PublicationDTO>();
 		List<Publication> publications = publicationRepository.findAllPublicationsFoundByIdUser(idUser);
 		
-		for (Publication publication : publications) {
+		if(publications.size() != 0)
+		{
+			for (Publication publication : publications) {
 				publicationsDTO.add(PublicationTransformer.ConvertPublicationToPublicationDTO(publication));
-		}
-		
-		return publicationsDTO;
-	}
+				}
+			return publicationsDTO;
+		} else throw new WithoutPublicationsException("No hay publicaciones en mascotas encontradas");
+	 }
 }
+

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +19,11 @@ import root.controller.exceptions.EmailAlreadyCreatedException;
 import root.controller.exceptions.EmailInvalidException;
 import root.controller.exceptions.UserAlreadyCreatedExceptions;
 import root.exceptions.InvalidUserException;
+import root.model.Person;
 import root.model.User;
 import root.repository.PersonRepository;
 import root.repository.UserRepository;
+import root.transformers.PersonTransformer;
 import root.transformers.UserTransformer;
 
 
@@ -95,4 +98,5 @@ public class UserController {
 		userRepository.save(user);
 		userRepository.updateIdPersonInUser(userDTO.PersonDTO.Id, user.getId());
 	}
+	
 }

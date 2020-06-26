@@ -1,11 +1,18 @@
 package root.controller;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import root.DTO.CareDTO;
@@ -13,12 +20,19 @@ import root.DTO.PersonDTO;
 import root.DTO.TransitDTO;
 import root.DTO.TransportDTO;
 import root.DTO.UserDTO;
+import root.constants.TypeService;
 import root.model.Care;
 import root.model.Person;
+import root.model.Service;
 import root.model.Transit;
 import root.model.Transport;
 import root.model.User;
 import root.repository.PrestacionRepository;
+import root.transformers.CareTransformer;
+import root.transformers.TransitTransformer;
+import root.transformers.TransportTransformer;
+import root.transformers.UserTransformer;
+import root.controller.exceptions.ServiceIncompleteException;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -35,46 +49,10 @@ public class PrestacionController {
 		List<CareDTO> caresDTO = new ArrayList<CareDTO>();
 		
 		for (Care care : cares) {
-			caresDTO.add(ConvertCareToCareDTO(care));
+			caresDTO.add(CareTransformer.ConvertCareToCareDTO(care));
 		}
 		
 		return caresDTO;
-	}
-	
-	private CareDTO ConvertCareToCareDTO(Care care)
-	{
-		CareDTO careDTO = new CareDTO();
-		careDTO.Id = care.getId();
-		careDTO.UserDTO = ConvertUserToUserDTO(care.getUser());
-		
-		careDTO.ServiceDescription = care.getDescription();
-		careDTO.ServiceStatus = care.getServiceStatus();
-		careDTO.UnidOfTime = care.getUnidOfTime();
-		careDTO.CareTime = care.getCareTime();
-		
-		return careDTO;
-	}
-	
-	private UserDTO ConvertUserToUserDTO(User user) {
-		UserDTO userDTO = new UserDTO();
-		userDTO.Email = user.getEmail();
-		userDTO.Password = user.getPassword();
-		userDTO.UserName = user.getUserName();
-		userDTO.UserGuid = user.getUserGuid();
-		userDTO.PersonDTO = ConvertPersonToPersonDTO(user.getPerson());
-		
-		return userDTO;
-	}
-	
-	private PersonDTO ConvertPersonToPersonDTO(Person person) {
-		PersonDTO personDTO = new PersonDTO();
-		personDTO.Address = person.getAddress();
-		personDTO.Location = person.getLocation();
-		personDTO.Name = person.getName();
-		personDTO.SurName = person.getSurName();
-		personDTO.Telephone = person.getTelephone();
-		
-		return personDTO;
 	}
 	
 	@GetMapping("/allTransitServices")
@@ -84,24 +62,10 @@ public class PrestacionController {
 		List<TransitDTO> listOfTransitDTO = new ArrayList<TransitDTO>();
 		
 		for (Transit transit : listOfTransit) {
-			listOfTransitDTO.add(ConvertTransitToTransitDTO(transit));
+			listOfTransitDTO.add(TransitTransformer.ConvertTransitToTransitDTO(transit));
 		}
 		
 		return listOfTransitDTO;
-	}
-	
-	private TransitDTO ConvertTransitToTransitDTO(Transit transit)
-	{
-		TransitDTO transitDTO = new TransitDTO();
-		transitDTO.Id = transit.getId();
-		transitDTO.UserDTO = ConvertUserToUserDTO(transit.getUser());
-		
-		transitDTO.ServiceDescription = transit.getDescription();
-		transitDTO.ServiceStatus = transit.getServiceStatus();
-		transitDTO.UnidOfTime = transit.getUnidOfTime();
-		transitDTO.TransitTime = transit.getTransitTime();
-		
-		return transitDTO;
 	}
 
 	@GetMapping("/allTransportServices")
@@ -110,24 +74,10 @@ public class PrestacionController {
 		List<TransportDTO> transportsDTO = new ArrayList<TransportDTO>();
 		
 		for (Transport transport : transports) {
-			transportsDTO.add(ConvertTransportToTransportDTO(transport));
+			transportsDTO.add(TransportTransformer.ConvertTransportToTransportDTO(transport));
 		}
 		
 		return transportsDTO;
-	}
-	
-	private TransportDTO ConvertTransportToTransportDTO(Transport transport)
-	{
-		TransportDTO transportDTO = new TransportDTO();
-		transportDTO.Id = transport.getId();
-		transportDTO.UserDTO = ConvertUserToUserDTO(transport.getUser());
-		
-		transportDTO.ServiceDescription = transport.getDescription();
-		transportDTO.ServiceStatus = transport.getServiceStatus();
-		transportDTO.UnidOfTime = transport.getUnidOfTime();
-		transportDTO.ScheduleAvailable = transport.getScheduleAvailable();
-		
-		return transportDTO;
 	}
 
 	@GetMapping("/allUserCareServices/{id}")
@@ -137,7 +87,7 @@ public class PrestacionController {
 		List<CareDTO> caresDTO = new ArrayList<CareDTO>();
 		
 		for (Care care : cares) {
-			caresDTO.add(ConvertCareToCareDTO(care));
+			caresDTO.add(CareTransformer.ConvertCareToCareDTO(care));
 		}
 		
 		return caresDTO;
@@ -150,7 +100,7 @@ public class PrestacionController {
 		List<TransitDTO> listOfTransitDTO = new ArrayList<TransitDTO>();
 		
 		for (Transit transit : listOfTransit) {
-			listOfTransitDTO.add(ConvertTransitToTransitDTO(transit));
+			listOfTransitDTO.add(TransitTransformer.ConvertTransitToTransitDTO(transit));
 		}
 		
 		return listOfTransitDTO;
@@ -163,9 +113,89 @@ public class PrestacionController {
 		List<TransportDTO> transportsDTO = new ArrayList<TransportDTO>();
 		
 		for (Transport transport : transports) {
-			transportsDTO.add(ConvertTransportToTransportDTO(transport));
+			transportsDTO.add(TransportTransformer.ConvertTransportToTransportDTO(transport));
 		}
 		
 		return transportsDTO;
+	}
+	
+	@GetMapping("/service/Transit/{id}")
+	public TransitDTO getTransitServiceByIdAndTypeService(@PathVariable(value = "id") Long idTransit) {
+		
+		Transit serviceTransit = prestacionRepository.findTransitServiceByIdService(idTransit);
+		TransitDTO servTransitDTO = TransitTransformer.ConvertTransitToTransitDTO(serviceTransit);
+
+		return servTransitDTO;
+	}
+	
+	@GetMapping("/service/Transport/{id}")
+	public TransportDTO getTransportServiceByIdAndTypeService(@PathVariable(value = "id") Long idTransport) {
+		
+		Transport serviceTransport = prestacionRepository.findTransportServiceByIdService(idTransport);
+		TransportDTO servTransportDTO = TransportTransformer.ConvertTransportToTransportDTO(serviceTransport);
+
+		return servTransportDTO;
+	}
+	
+	
+	@GetMapping("/service/Care/{id}")
+	public CareDTO getCareServiceByIdAndTypeService(@PathVariable(value = "id") Long idCare) {
+		
+		Care serviceCare = prestacionRepository.findCareServiceByIdService(idCare);
+		CareDTO servCareDTO = CareTransformer.ConvertCareToCareDTO(serviceCare);
+
+		return servCareDTO;
+	}
+	
+	@PutMapping("/editService/Transit")
+	public ResponseEntity<Transit> updateTransitService(@Valid @RequestBody TransitDTO serv) {
+		
+		if(serv.isValidService()) {
+			
+			Transit updateTransit = prestacionRepository.findTransitServiceByIdService(serv.Id);
+
+			updateTransit.setDescription(serv.ServiceDescription);
+			updateTransit.setUnidOfTime(serv.UnidOfTime);
+			updateTransit.setTransitTime(serv.TransitTime);
+
+			prestacionRepository.save(updateTransit);
+			return ResponseEntity.ok(updateTransit);
+			
+		} else throw new ServiceIncompleteException("Servicio incompleto");
+
+	}
+	
+	@PutMapping("/editService/Transport")
+	public ResponseEntity<Transport> updateTransportService(@Valid @RequestBody TransportDTO serv){
+		
+		if(serv.isValidService()) {
+			
+			Transport updateTransport = prestacionRepository.findTransportServiceByIdService(serv.Id);
+
+			updateTransport.setDescription(serv.ServiceDescription);
+			updateTransport.setUnidOfTime(serv.UnidOfTime);
+			updateTransport.setScheduleAvailable(serv.ScheduleAvailable);
+			
+			prestacionRepository.save(updateTransport);
+			return ResponseEntity.ok(updateTransport);
+			
+		} else throw new ServiceIncompleteException("Servicio incompleto");
+	}
+	
+	@PutMapping("/editService/Care")
+	public ResponseEntity<Care> updateCareService(@Valid @RequestBody CareDTO serv){
+
+		if(serv.isValidService()) {
+			
+			Care updateCare = prestacionRepository.findCareServiceByIdService(serv.Id);
+			
+			updateCare.setDescription(serv.ServiceDescription);
+			updateCare.setUnidOfTime(serv.UnidOfTime);
+			updateCare.setCareTime(serv.CareTime);
+			
+			prestacionRepository.save(updateCare);
+			return ResponseEntity.ok(updateCare);
+			
+		} else throw new ServiceIncompleteException("Servicio incompleto");
 	}
 }
