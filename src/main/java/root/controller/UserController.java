@@ -21,6 +21,7 @@ import root.exceptions.InvalidUserException;
 import root.model.User;
 import root.repository.PersonRepository;
 import root.repository.UserRepository;
+import root.transformers.PersonTransformer;
 import root.transformers.UserTransformer;
 
 
@@ -95,4 +96,5 @@ public class UserController {
 		userRepository.save(user);
 		userRepository.updateIdPersonInUser(userDTO.PersonDTO.Id, user.getId());
 	}
+	
 }
