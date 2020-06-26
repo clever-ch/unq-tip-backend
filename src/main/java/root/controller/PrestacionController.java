@@ -1,6 +1,5 @@
 package root.controller;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,23 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import root.DTO.CareDTO;
-import root.DTO.PersonDTO;
 import root.DTO.TransitDTO;
 import root.DTO.TransportDTO;
-import root.DTO.UserDTO;
 import root.constants.ServiceStatus;
-import root.constants.TypeService;
 import root.model.Care;
-import root.model.Person;
-import root.model.Service;
 import root.model.Transit;
 import root.model.Transport;
-import root.model.User;
 import root.repository.PrestacionRepository;
 import root.transformers.CareTransformer;
 import root.transformers.TransitTransformer;
 import root.transformers.TransportTransformer;
-import root.transformers.UserTransformer;
 import root.controller.exceptions.ServiceIncompleteException;
 
 @CrossOrigin(origins = "http://localhost:4200")
