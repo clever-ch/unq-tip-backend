@@ -121,6 +121,7 @@ public class PublicationController {
 			return publicationsDTO;
 		} else throw new WithoutPublicationsException("No hay publicaciones en mascotas perdidas");
 	 }
+
 	
 	@GetMapping("/allUserPublicationsFound/{id}")
 	public List<PublicationDTO> GetAllPublicationsFoundByIdUser(@PathVariable(value = "id") Long idUser) {
