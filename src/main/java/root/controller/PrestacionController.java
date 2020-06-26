@@ -1,9 +1,13 @@
 package root.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,7 @@ import root.DTO.PersonDTO;
 import root.DTO.TransitDTO;
 import root.DTO.TransportDTO;
 import root.DTO.UserDTO;
+import root.constants.ServiceStatus;
 import root.model.Care;
 import root.model.Person;
 import root.model.Transit;
@@ -167,5 +172,44 @@ public class PrestacionController {
 		}
 		
 		return transportsDTO;
+	}
+	
+	@DeleteMapping("/deleteTransitService/{id}")
+	public Map<String, Boolean> deleteTransitServiceById(@PathVariable(value = "id") Long idService)
+	{		
+		Transit transitToDelete = prestacionRepository.getTransitServiceById(idService);
+		transitToDelete.setServiceStatus(ServiceStatus.Inactive);
+		prestacionRepository.save(transitToDelete);
+		
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		
+		return response;
+	}
+	
+	@DeleteMapping("/deleteTransportService/{id}")
+	public Map<String, Boolean> deleteTransportServiceById(@PathVariable(value = "id") Long idService)
+	{
+		Transport TransportToDelete = prestacionRepository.getTransportServiceById(idService);
+		TransportToDelete.setServiceStatus(ServiceStatus.Inactive);
+		prestacionRepository.save(TransportToDelete);
+		
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		
+		return response;
+	}
+	
+	@DeleteMapping("/deleteCareService/{id}")
+	public Map<String, Boolean> deleteCareServiceById(@PathVariable(value = "id") Long idService)
+	{
+		Care CareToDelete = prestacionRepository.getCareServiceById(idService);
+		CareToDelete.setServiceStatus(ServiceStatus.Inactive);
+		prestacionRepository.save(CareToDelete);
+		
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		
+		return response;
 	}
 }
