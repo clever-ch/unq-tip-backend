@@ -21,7 +21,6 @@ import root.exceptions.InvalidUserException;
 import root.model.User;
 import root.repository.PersonRepository;
 import root.repository.UserRepository;
-import root.transformers.PersonTransformer;
 import root.transformers.UserTransformer;
 
 
