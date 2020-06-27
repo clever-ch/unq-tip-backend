@@ -1,14 +1,16 @@
 package root.controller;
 
-import java.io.Console;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,22 +18,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import root.DTO.CareDTO;
-import root.DTO.PersonDTO;
 import root.DTO.TransitDTO;
 import root.DTO.TransportDTO;
-import root.DTO.UserDTO;
-import root.constants.TypeService;
 import root.model.Care;
-import root.model.Person;
-import root.model.Service;
+import root.constants.ServiceStatus;
 import root.model.Transit;
 import root.model.Transport;
-import root.model.User;
 import root.repository.PrestacionRepository;
 import root.transformers.CareTransformer;
 import root.transformers.TransitTransformer;
 import root.transformers.TransportTransformer;
-import root.transformers.UserTransformer;
 import root.controller.exceptions.ServiceIncompleteException;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -117,6 +113,45 @@ public class PrestacionController {
 		}
 		
 		return transportsDTO;
+	}
+	
+	@DeleteMapping("/deleteTransitService/{id}")
+	public Map<String, Boolean> deleteTransitServiceById(@PathVariable(value = "id") Long idService)
+	{		
+		Transit transitToDelete = prestacionRepository.findTransitServiceByIdService(idService);
+		transitToDelete.setServiceStatus(ServiceStatus.Inactive);
+		prestacionRepository.save(transitToDelete);
+		
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		
+		return response;
+	}
+	
+	@DeleteMapping("/deleteTransportService/{id}")
+	public Map<String, Boolean> deleteTransportServiceById(@PathVariable(value = "id") Long idService)
+	{
+		Transport TransportToDelete = prestacionRepository.findTransportServiceByIdService(idService);
+		TransportToDelete.setServiceStatus(ServiceStatus.Inactive);
+		prestacionRepository.save(TransportToDelete);
+		
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		
+		return response;
+	}
+	
+	@DeleteMapping("/deleteCareService/{id}")
+	public Map<String, Boolean> deleteCareServiceById(@PathVariable(value = "id") Long idService)
+	{
+		Care CareToDelete = prestacionRepository.findCareServiceByIdService(idService);
+		CareToDelete.setServiceStatus(ServiceStatus.Inactive);
+		prestacionRepository.save(CareToDelete);
+		
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		
+		return response;
 	}
 	
 	@GetMapping("/service/Transit/{id}")

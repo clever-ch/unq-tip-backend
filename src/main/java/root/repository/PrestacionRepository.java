@@ -12,13 +12,13 @@ import root.model.Transport;
 @Repository
 public interface PrestacionRepository extends JpaRepository<Service, Long>{
 
-	@Query("select c from Care c")
+	@Query("select c from Care c where c.serviceStatus = 1")
 	List<Care> findAllCareServices();
 	
-	@Query("select t from Transit t")
+	@Query("select t from Transit t where t.serviceStatus = 1")
 	List<Transit> findAllTransitServices();
 	
-	@Query("select t from Transport t")
+	@Query("select t from Transport t where t.serviceStatus = 1")
 	List<Transport> findAllTransportServices();
 	
 	@Query("select c from Care c where c.user.id = ?1")
