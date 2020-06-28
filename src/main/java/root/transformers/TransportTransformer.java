@@ -19,5 +19,18 @@ public class TransportTransformer {
 		
 		return transportDTO;
 	}
-
+	
+	public static Transport ConvertTransportDTOToTransport(TransportDTO transportDTO)
+	{
+		Transport transport = new Transport();
+		//transport.setUser(UserTransformer.ConvertUserDTOToUser(transportDTO.UserDTO));
+		
+		transport.setTypeService(transportDTO.TypeService);
+		transport.setDescription(transportDTO.ServiceDescription);
+		transport.setServiceStatus(transportDTO.ServiceStatus);
+		transport.setUnidOfTime(transportDTO.UnidOfTime);
+		transport.setScheduleAvailable(transportDTO.ScheduleAvailable);
+		
+		return transport;
+	}
 }
