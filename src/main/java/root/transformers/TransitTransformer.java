@@ -20,5 +20,17 @@ public class TransitTransformer {
 		return transitDTO;
 	}
 	
-
+	public static Transit ConvertTransitDTOToTransit(TransitDTO transitDTO)
+	{
+		Transit transit = new Transit();
+		//transit.setUser(UserTransformer.ConvertUserDTOToUser(transitDTO.UserDTO));
+		
+		transit.setTypeService(transitDTO.TypeService);
+		transit.setDescription(transitDTO.ServiceDescription);
+		transit.setServiceStatus(transitDTO.ServiceStatus);
+		transit.setUnidOfTime(transitDTO.UnidOfTime);
+		transit.setTransitTime(transitDTO.TransitTime);
+		
+		return transit;
+	}
 }
