@@ -239,7 +239,9 @@ public class PrestacionController {
 		//Primero las validaciones sobre el DTO
 		
 		Transit transit = TransitTransformer.ConvertTransitDTOToTransit(transitDTO);
+		transit.setServiceStatus(ServiceStatus.Active);
 		
+		prestacionRepository.save(transit);
 		return ResponseEntity.ok(transit);
 	}
 	
@@ -249,7 +251,9 @@ public class PrestacionController {
 		//Validaciones
 		
 		Transport transport = TransportTransformer.ConvertTransportDTOToTransport(transportDTO);
+		transport.setServiceStatus(ServiceStatus.Active);
 		
+		prestacionRepository.save(transport);
 		return ResponseEntity.ok(transport);
 	}
 	
@@ -259,7 +263,9 @@ public class PrestacionController {
 		//Validacion
 		
 		Care care = CareTransformer.ConvertCareDTOToCare(careDTO);
+		care.setServiceStatus(ServiceStatus.Active);
 		
+		prestacionRepository.save(care);
 		return ResponseEntity.ok(care);
 	}
 }
