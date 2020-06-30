@@ -236,36 +236,60 @@ public class PrestacionController {
 	@PostMapping("/createTransitService")
 	public ResponseEntity<Transit> createTransitService(@Valid @RequestBody TransitDTO transitDTO) {
 		
-		//Primero las validaciones sobre el DTO
+		//Primero deben ir las validaciones sobre el DTO
 		
+		long idUsuario = transitDTO.UserDTO.Id;
 		Transit transit = TransitTransformer.ConvertTransitDTOToTransit(transitDTO);
 		transit.setServiceStatus(ServiceStatus.Active);
 		
-		prestacionRepository.save(transit);
+		SaveOrUpdateTransitService(idUsuario, transit);
+		
 		return ResponseEntity.ok(transit);
+	}
+
+	private void SaveOrUpdateTransitService(long idUsuario, Transit transit) {
+		prestacionRepository.save(transit);
+		Transit lastTransit = prestacionRepository.getLastTransitServiceCreated();
+		prestacionRepository.updateIdUserInTransitService(idUsuario, lastTransit.getId());
 	}
 	
 	@PostMapping("/createTransportService")
 	public ResponseEntity<Transport> createTransportService(@Valid @RequestBody TransportDTO transportDTO) {
 		
-		//Validaciones
+		//Primero deben ir las validaciones sobre el DTO
 		
+		long idUsuario = transportDTO.UserDTO.Id;
 		Transport transport = TransportTransformer.ConvertTransportDTOToTransport(transportDTO);
 		transport.setServiceStatus(ServiceStatus.Active);
 		
-		prestacionRepository.save(transport);
+		SaveOrUpdateTransportService(idUsuario, transport);
+		
 		return ResponseEntity.ok(transport);
+	}
+
+	private void SaveOrUpdateTransportService(long idUsuario, Transport transport) {
+		prestacionRepository.save(transport);
+		Transport lastTransport = prestacionRepository.getLastTransportServiceCreated();
+		prestacionRepository.updateIdUserInTransportService(idUsuario, lastTransport.getId());
 	}
 	
 	@PostMapping("/createCareService")
 	public ResponseEntity<Care> createCareService(@Valid @RequestBody CareDTO careDTO) {
 		
-		//Validacion
+		//Primero deben ir las validaciones sobre el DTO
 		
+		long idUsuario = careDTO.UserDTO.Id;
 		Care care = CareTransformer.ConvertCareDTOToCare(careDTO);
 		care.setServiceStatus(ServiceStatus.Active);
 		
-		prestacionRepository.save(care);
+		SaveOrUpdateCareService(idUsuario, care);
+		
 		return ResponseEntity.ok(care);
+	}
+
+	private void SaveOrUpdateCareService(long idUsuario, Care care) {
+		prestacionRepository.save(care);
+		Care lastCare = prestacionRepository.getLastCareServiceCreated();
+		prestacionRepository.updateIdUserInCareService(idUsuario, lastCare.getId());
 	}
 }
