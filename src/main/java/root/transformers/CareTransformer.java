@@ -18,4 +18,18 @@ public class CareTransformer {
 		careDTO.CareTime = care.getCareTime();
 		return careDTO;
 	}
+	
+	public static Care ConvertCareDTOToCare(CareDTO careDTO)
+	{
+		Care care = new Care();
+		//care.setUser(UserTransformer.ConvertUserDTOToUser(careDTO.UserDTO));
+		
+		care.setTypeService(careDTO.TypeService);
+		care.setDescription(careDTO.ServiceDescription);
+		care.setServiceStatus(careDTO.ServiceStatus);
+		care.setUnidOfTime(careDTO.UnidOfTime);
+		care.setCareTime(careDTO.CareTime);
+		
+		return care;
+	}
 }
