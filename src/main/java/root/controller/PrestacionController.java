@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -266,5 +267,65 @@ public class PrestacionController {
 			return ResponseEntity.ok(updateCare);
 			
 		} else throw new ServiceIncompleteException("Servicio incompleto");
+	}
+	
+	@PostMapping("/createTransitService")
+	public ResponseEntity<Transit> createTransitService(@Valid @RequestBody TransitDTO transitDTO) {
+		
+		//Primero deben ir las validaciones sobre el DTO
+		
+		long idUsuario = transitDTO.UserDTO.Id;
+		Transit transit = TransitTransformer.ConvertTransitDTOToTransit(transitDTO);
+		transit.setServiceStatus(ServiceStatus.Active);
+		
+		SaveOrUpdateTransitService(idUsuario, transit);
+		
+		return ResponseEntity.ok(transit);
+	}
+
+	private void SaveOrUpdateTransitService(long idUsuario, Transit transit) {
+		prestacionRepository.save(transit);
+		Transit lastTransit = prestacionRepository.getLastTransitServiceCreated();
+		prestacionRepository.updateIdUserInTransitService(idUsuario, lastTransit.getId());
+	}
+	
+	@PostMapping("/createTransportService")
+	public ResponseEntity<Transport> createTransportService(@Valid @RequestBody TransportDTO transportDTO) {
+		
+		//Primero deben ir las validaciones sobre el DTO
+		
+		long idUsuario = transportDTO.UserDTO.Id;
+		Transport transport = TransportTransformer.ConvertTransportDTOToTransport(transportDTO);
+		transport.setServiceStatus(ServiceStatus.Active);
+		
+		SaveOrUpdateTransportService(idUsuario, transport);
+		
+		return ResponseEntity.ok(transport);
+	}
+
+	private void SaveOrUpdateTransportService(long idUsuario, Transport transport) {
+		prestacionRepository.save(transport);
+		Transport lastTransport = prestacionRepository.getLastTransportServiceCreated();
+		prestacionRepository.updateIdUserInTransportService(idUsuario, lastTransport.getId());
+	}
+	
+	@PostMapping("/createCareService")
+	public ResponseEntity<Care> createCareService(@Valid @RequestBody CareDTO careDTO) {
+		
+		//Primero deben ir las validaciones sobre el DTO
+		
+		long idUsuario = careDTO.UserDTO.Id;
+		Care care = CareTransformer.ConvertCareDTOToCare(careDTO);
+		care.setServiceStatus(ServiceStatus.Active);
+		
+		SaveOrUpdateCareService(idUsuario, care);
+		
+		return ResponseEntity.ok(care);
+	}
+
+	private void SaveOrUpdateCareService(long idUsuario, Care care) {
+		prestacionRepository.save(care);
+		Care lastCare = prestacionRepository.getLastCareServiceCreated();
+		prestacionRepository.updateIdUserInCareService(idUsuario, lastCare.getId());
 	}
 }
