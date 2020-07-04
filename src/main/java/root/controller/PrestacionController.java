@@ -3,8 +3,10 @@ package root.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 import javax.validation.Valid;
+
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import root.DTO.CareDTO;
 import root.DTO.TransitDTO;
 import root.DTO.TransportDTO;
-import root.constants.ServiceStatus;
 import root.model.Care;
+import root.constants.ServiceStatus;
 import root.model.Transit;
 import root.model.Transport;
 import root.repository.PrestacionRepository;
@@ -117,40 +119,74 @@ public class PrestacionController {
 	@DeleteMapping("/deleteTransitService/{id}")
 	public Map<String, Boolean> deleteTransitServiceById(@PathVariable(value = "id") Long idService)
 	{		
-		Transit transitToDelete = prestacionRepository.findTransitServiceByIdService(idService);
-		transitToDelete.setServiceStatus(ServiceStatus.Inactive);
-		prestacionRepository.save(transitToDelete);
+		Transit transitToActOrDes = prestacionRepository.findTransitServiceByIdService(idService);
 		
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
+		if(transitToActOrDes.getServiceStatus() == ServiceStatus.Active) {
+			transitToActOrDes.setServiceStatus(ServiceStatus.Inactive);
+			prestacionRepository.save(transitToActOrDes);
+			
+			Map<String, Boolean> response = new HashMap<>();
+			response.put("disable", Boolean.TRUE);
+			
+			return response;
+		} else {
+			transitToActOrDes.setServiceStatus(ServiceStatus.Active);
+			prestacionRepository.save(transitToActOrDes);
+			
+			Map<String, Boolean> response = new HashMap<>();
+			response.put("disable", Boolean.FALSE);
+			
+			return response;
+		}
 		
-		return response;
 	}
 	
 	@DeleteMapping("/deleteTransportService/{id}")
 	public Map<String, Boolean> deleteTransportServiceById(@PathVariable(value = "id") Long idService)
 	{
-		Transport TransportToDelete = prestacionRepository.findTransportServiceByIdService(idService);
-		TransportToDelete.setServiceStatus(ServiceStatus.Inactive);
-		prestacionRepository.save(TransportToDelete);
+		Transport TransportToActOrDes = prestacionRepository.findTransportServiceByIdService(idService);
 		
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
+		if(TransportToActOrDes.getServiceStatus() == ServiceStatus.Active) {
+			TransportToActOrDes.setServiceStatus(ServiceStatus.Inactive);
+			prestacionRepository.save(TransportToActOrDes);
 		
-		return response;
+			Map<String, Boolean> response = new HashMap<>();
+			response.put("disable", Boolean.TRUE);
+		
+			return response;
+		} else {
+			TransportToActOrDes.setServiceStatus(ServiceStatus.Active);
+			prestacionRepository.save(TransportToActOrDes);
+			
+			Map<String, Boolean> response = new HashMap<>();
+			response.put("disable", Boolean.FALSE);
+			
+			return response;
+		}
 	}
 	
 	@DeleteMapping("/deleteCareService/{id}")
 	public Map<String, Boolean> deleteCareServiceById(@PathVariable(value = "id") Long idService)
 	{
-		Care CareToDelete = prestacionRepository.findCareServiceByIdService(idService);
-		CareToDelete.setServiceStatus(ServiceStatus.Inactive);
-		prestacionRepository.save(CareToDelete);
+		Care CareToActOrDes = prestacionRepository.findCareServiceByIdService(idService);
 		
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
+		if(CareToActOrDes.getServiceStatus() == ServiceStatus.Active) {
+			CareToActOrDes.setServiceStatus(ServiceStatus.Inactive);
+			prestacionRepository.save(CareToActOrDes);
 		
-		return response;
+			Map<String, Boolean> response = new HashMap<>();
+			response.put("disable", Boolean.TRUE);
+		
+			return response;
+		} else {
+			CareToActOrDes.setServiceStatus(ServiceStatus.Active);
+			prestacionRepository.save(CareToActOrDes);
+			
+			Map<String, Boolean> response = new HashMap<>();
+			response.put("disable", Boolean.FALSE);
+			
+			return response;
+		}
 	}
 	
 	@GetMapping("/service/Transit/{id}")
