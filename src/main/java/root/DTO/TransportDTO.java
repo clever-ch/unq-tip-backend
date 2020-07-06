@@ -3,6 +3,7 @@ package root.DTO;
 import root.constants.ServiceStatus;
 import root.constants.TypeService;
 import root.constants.UnidOfTime;
+import root.controller.exceptions.ServiceIncompleteException;
 
 public class TransportDTO {
 
@@ -22,7 +23,14 @@ public class TransportDTO {
 	}
 	
 	private boolean hasDescription() {
-		return this.ServiceDescription != "" & this.ServiceDescription != null;
+		return (this.ServiceDescription != "" & this.ServiceDescription != null) & 
+				(this.minCharacterPass());
+	}
+	
+	private boolean minCharacterPass() {
+		if(this.ServiceDescription != null) {
+			return this.ServiceDescription.length() > 50;
+		} else throw new ServiceIncompleteException("Revisar formulario creacion de Servicio");
 	}
 
 	private boolean hasUnidOfTime() {
@@ -30,6 +38,6 @@ public class TransportDTO {
 	}
 
 	private boolean hasScheduleAvailable() {
-		return this.ScheduleAvailable != 0;
+		return this.ScheduleAvailable <= 31;
 	}
 }
