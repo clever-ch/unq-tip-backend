@@ -22,6 +22,7 @@ import root.DTO.CareDTO;
 import root.DTO.TransitDTO;
 import root.DTO.TransportDTO;
 import root.model.Care;
+import root.model.Service;
 import root.constants.ServiceStatus;
 import root.model.Transit;
 import root.model.Transport;
@@ -29,6 +30,7 @@ import root.repository.PrestacionRepository;
 import root.transformers.CareTransformer;
 import root.transformers.TransitTransformer;
 import root.transformers.TransportTransformer;
+import root.controller.exceptions.AnimalInvalidException;
 import root.controller.exceptions.ServiceIncompleteException;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -273,14 +275,17 @@ public class PrestacionController {
 	public ResponseEntity<Transit> createTransitService(@Valid @RequestBody TransitDTO transitDTO) {
 		
 		//Primero deben ir las validaciones sobre el DTO
+		if(transitDTO.isValidService()) {
 		
-		long idUsuario = transitDTO.UserDTO.Id;
-		Transit transit = TransitTransformer.ConvertTransitDTOToTransit(transitDTO);
-		transit.setServiceStatus(ServiceStatus.Active);
+			long idUsuario = transitDTO.UserDTO.Id;
+			Transit transit = TransitTransformer.ConvertTransitDTOToTransit(transitDTO);
+			transit.setServiceStatus(ServiceStatus.Active);
 		
-		SaveOrUpdateTransitService(idUsuario, transit);
+			SaveOrUpdateTransitService(idUsuario, transit);
 		
-		return ResponseEntity.ok(transit);
+			return ResponseEntity.ok(transit);
+			
+		} else throw new ServiceIncompleteException("Revisar formulario creacion de Servicio");
 	}
 
 	private void SaveOrUpdateTransitService(long idUsuario, Transit transit) {
@@ -293,14 +298,17 @@ public class PrestacionController {
 	public ResponseEntity<Transport> createTransportService(@Valid @RequestBody TransportDTO transportDTO) {
 		
 		//Primero deben ir las validaciones sobre el DTO
+		if(transportDTO.isValidService()) {
 		
-		long idUsuario = transportDTO.UserDTO.Id;
-		Transport transport = TransportTransformer.ConvertTransportDTOToTransport(transportDTO);
-		transport.setServiceStatus(ServiceStatus.Active);
+			long idUsuario = transportDTO.UserDTO.Id;
+			Transport transport = TransportTransformer.ConvertTransportDTOToTransport(transportDTO);
+			transport.setServiceStatus(ServiceStatus.Active);
+			
+			SaveOrUpdateTransportService(idUsuario, transport);
 		
-		SaveOrUpdateTransportService(idUsuario, transport);
-		
-		return ResponseEntity.ok(transport);
+			return ResponseEntity.ok(transport);
+			
+		} else throw new ServiceIncompleteException("Revisar formulario creacion de Servicio");
 	}
 
 	private void SaveOrUpdateTransportService(long idUsuario, Transport transport) {
@@ -313,14 +321,18 @@ public class PrestacionController {
 	public ResponseEntity<Care> createCareService(@Valid @RequestBody CareDTO careDTO) {
 		
 		//Primero deben ir las validaciones sobre el DTO
+		if(careDTO.isValidService()) {
 		
-		long idUsuario = careDTO.UserDTO.Id;
-		Care care = CareTransformer.ConvertCareDTOToCare(careDTO);
-		care.setServiceStatus(ServiceStatus.Active);
+			long idUsuario = careDTO.UserDTO.Id;
+			Care care = CareTransformer.ConvertCareDTOToCare(careDTO);
+			care.setServiceStatus(ServiceStatus.Active);
 		
-		SaveOrUpdateCareService(idUsuario, care);
+			SaveOrUpdateCareService(idUsuario, care);
 		
-		return ResponseEntity.ok(care);
+			return ResponseEntity.ok(care);
+			
+		} else throw new ServiceIncompleteException("Revisar formulario creacion de Servicio");
+		
 	}
 
 	private void SaveOrUpdateCareService(long idUsuario, Care care) {
@@ -328,4 +340,5 @@ public class PrestacionController {
 		Care lastCare = prestacionRepository.getLastCareServiceCreated();
 		prestacionRepository.updateIdUserInCareService(idUsuario, lastCare.getId());
 	}
+
 }
