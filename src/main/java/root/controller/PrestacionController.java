@@ -22,7 +22,6 @@ import root.DTO.CareDTO;
 import root.DTO.TransitDTO;
 import root.DTO.TransportDTO;
 import root.model.Care;
-import root.model.Service;
 import root.constants.ServiceStatus;
 import root.model.Transit;
 import root.model.Transport;
@@ -30,7 +29,6 @@ import root.repository.PrestacionRepository;
 import root.transformers.CareTransformer;
 import root.transformers.TransitTransformer;
 import root.transformers.TransportTransformer;
-import root.controller.exceptions.AnimalInvalidException;
 import root.controller.exceptions.ServiceIncompleteException;
 
 @CrossOrigin(origins = "http://localhost:4200")
