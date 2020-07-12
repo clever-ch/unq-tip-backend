@@ -29,19 +29,19 @@ public class TestPublicationController {
 	
 	@Test
 	public void testGetPublicationsLost_ReturnTrue() {		
-		Publication publication = PublicationFactory.createFullPublicationWithType(PublicationType.LOST);
+		Publication publication = PublicationFactory.createFullPublicationWithType(PublicationType.Perdido);
 		List<Publication> publications = new ArrayList<Publication>();
 		publications.add(publication);
 		
 		when(publicationRepository.findAllPublicationsLost()).thenReturn(publications);
 		
-		PublicationDTO publicationDTO = PublicationDTOFactory.createFullPublicationDTOWithType(PublicationType.LOST);
+		PublicationDTO publicationDTO = PublicationDTOFactory.createFullPublicationDTOWithType(PublicationType.Perdido);
 		List<PublicationDTO> resultPublicationsDTO = new ArrayList<PublicationDTO>();
 		resultPublicationsDTO.add(publicationDTO);
 		
 		List<PublicationDTO> result = publicationController.getAllPublicationsLost();
 
 		assertTrue(result.size() != 0);
-		assertEquals(result.get(0).PublicationType, PublicationType.LOST);
+		assertEquals(result.get(0).PublicationType, PublicationType.Perdido);
 	}
 }
