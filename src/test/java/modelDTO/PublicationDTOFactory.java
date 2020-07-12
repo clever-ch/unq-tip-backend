@@ -22,7 +22,7 @@ public class PublicationDTOFactory {
 	
 	public static PublicationDTO createFullPublicationDTOWithType(PublicationType type) {
 		
-		AnimalDTO animalDTO = AnimalDTOFactory.createCompleteAnimal(AnimalType.BIRD, "", "", "", "");
+		AnimalDTO animalDTO = AnimalDTOFactory.createCompleteAnimal(AnimalType.Ave, "", "", "", "");
 		PersonDTO personDTO = PersonDTOFactory.createPersonComplete("", "", "", "", "");
 		UserDTO userDTO = UserDTOFactory.createACompleteUser("", "", "", personDTO);
 
