@@ -21,8 +21,8 @@ public class TestPublication {
         Animal aAnimal = AnimalFactory.anyAnimal();
         User aUser = UserFactory.anyUser();
 
-        Publication aPublication = PublicationFactory.createCompletePublication(aAnimal, aUser, "Quilmes", PublicationType.LOST,
-                PublicationStatus.ACTIVE, "Mitre", "Esto es un especificacion");
+        Publication aPublication = PublicationFactory.createCompletePublication(aAnimal, aUser, "Quilmes", PublicationType.Perdido,
+                PublicationStatus.Activo, "Mitre", "Esto es un especificacion");
 
         assertTrue(aPublication.isValidPublication());
     }
@@ -53,23 +53,23 @@ public class TestPublication {
     
     @Test
     public void testHasAType(){
-        Publication aPublication = PublicationFactory.createPublicationWithType(PublicationType.LOST);
+        Publication aPublication = PublicationFactory.createPublicationWithType(PublicationType.Perdido);
 
         assertTrue((aPublication.hasAPublicationType()));
     }
 
     @Test
     public void testHasAStatusActive(){
-        Publication aPublication = PublicationFactory.createPublicationWithStatus(PublicationStatus.ACTIVE);
+        Publication aPublication = PublicationFactory.createPublicationWithStatus(PublicationStatus.Activo);
 
-        assertTrue(aPublication.hasAPublicationStatus() && aPublication.getPublicationStatus() == PublicationStatus.ACTIVE);
+        assertTrue(aPublication.hasAPublicationStatus() && aPublication.getPublicationStatus() == PublicationStatus.Activo);
     }
 
     @Test
     public void testHasAStatusInactive(){
-        Publication aPublication = PublicationFactory.createPublicationWithStatus(PublicationStatus.INACTIVE);
+        Publication aPublication = PublicationFactory.createPublicationWithStatus(PublicationStatus.Inactivo);
 
-        assertTrue(aPublication.hasAPublicationStatus() && aPublication.getPublicationStatus() == PublicationStatus.INACTIVE);
+        assertTrue(aPublication.hasAPublicationStatus() && aPublication.getPublicationStatus() == PublicationStatus.Inactivo);
     }
 
     @Test

@@ -12,7 +12,7 @@ public class TestAnimal {
         @Test
         public void testAnimalHasType() {
 
-            final AnimalType Animal_TYPE = AnimalType.CAT;
+            final AnimalType Animal_TYPE = AnimalType.Gato;
 
             Animal anyAnimal = AnimalFactory.createAnimalWithAnimalType(Animal_TYPE);
 

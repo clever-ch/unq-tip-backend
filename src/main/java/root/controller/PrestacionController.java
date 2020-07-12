@@ -32,6 +32,7 @@ import root.transformers.TransitTransformer;
 import root.transformers.TransportTransformer;
 import root.controller.exceptions.AnimalInvalidException;
 import root.controller.exceptions.ServiceIncompleteException;
+import root.controller.exceptions.WithoutServicesException;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -85,11 +86,13 @@ public class PrestacionController {
 		List<Care> cares = prestacionRepository.findAllCareServicesByIdUser(idUser);
 		List<CareDTO> caresDTO = new ArrayList<CareDTO>();
 		
-		for (Care care : cares) {
-			caresDTO.add(CareTransformer.ConvertCareToCareDTO(care));
-		}
+		if(cares.size() != 0) {
+				for (Care care : cares) {
+				caresDTO.add(CareTransformer.ConvertCareToCareDTO(care));
+				}
 		
-		return caresDTO;
+				return caresDTO;
+		} else throw new WithoutServicesException("No hay registro de servicios de cuidado");
 	}
 	
 	@GetMapping("/allUserTransitServices/{id}")
@@ -98,11 +101,13 @@ public class PrestacionController {
 		List<Transit> listOfTransit = prestacionRepository.findAllTransitServicesByIdUser(idUser);
 		List<TransitDTO> listOfTransitDTO = new ArrayList<TransitDTO>();
 		
-		for (Transit transit : listOfTransit) {
-			listOfTransitDTO.add(TransitTransformer.ConvertTransitToTransitDTO(transit));
-		}
+		if(listOfTransit.size() != 0) {
+				for (Transit transit : listOfTransit) {
+				listOfTransitDTO.add(TransitTransformer.ConvertTransitToTransitDTO(transit));
+				}
 		
-		return listOfTransitDTO;
+				return listOfTransitDTO;
+		} else throw new WithoutServicesException("No hay registro de servicios de transito");
 	}
 	
 	@GetMapping("/allUserTransportServices/{id}")
@@ -111,11 +116,13 @@ public class PrestacionController {
 		List<Transport> transports = prestacionRepository.findAllTransportServicesByIdUser(idUser);
 		List<TransportDTO> transportsDTO = new ArrayList<TransportDTO>();
 		
-		for (Transport transport : transports) {
+		if(transports.size() != 0) {
+			for (Transport transport : transports) {
 			transportsDTO.add(TransportTransformer.ConvertTransportToTransportDTO(transport));
-		}
-		
-		return transportsDTO;
+			}
+			
+			return transportsDTO;
+		} else throw new WithoutServicesException("No hay registro de servicios de transporte");
 	}
 	
 	@DeleteMapping("/deleteTransitService/{id}")
@@ -123,8 +130,8 @@ public class PrestacionController {
 	{		
 		Transit transitToActOrDes = prestacionRepository.findTransitServiceByIdService(idService);
 		
-		if(transitToActOrDes.getServiceStatus() == ServiceStatus.Active) {
-			transitToActOrDes.setServiceStatus(ServiceStatus.Inactive);
+		if(transitToActOrDes.getServiceStatus() == ServiceStatus.Activo) {
+			transitToActOrDes.setServiceStatus(ServiceStatus.Inactivo);
 			prestacionRepository.save(transitToActOrDes);
 			
 			Map<String, Boolean> response = new HashMap<>();
@@ -132,7 +139,7 @@ public class PrestacionController {
 			
 			return response;
 		} else {
-			transitToActOrDes.setServiceStatus(ServiceStatus.Active);
+			transitToActOrDes.setServiceStatus(ServiceStatus.Activo);
 			prestacionRepository.save(transitToActOrDes);
 			
 			Map<String, Boolean> response = new HashMap<>();
@@ -148,8 +155,8 @@ public class PrestacionController {
 	{
 		Transport TransportToActOrDes = prestacionRepository.findTransportServiceByIdService(idService);
 		
-		if(TransportToActOrDes.getServiceStatus() == ServiceStatus.Active) {
-			TransportToActOrDes.setServiceStatus(ServiceStatus.Inactive);
+		if(TransportToActOrDes.getServiceStatus() == ServiceStatus.Activo) {
+			TransportToActOrDes.setServiceStatus(ServiceStatus.Inactivo);
 			prestacionRepository.save(TransportToActOrDes);
 		
 			Map<String, Boolean> response = new HashMap<>();
@@ -157,7 +164,7 @@ public class PrestacionController {
 		
 			return response;
 		} else {
-			TransportToActOrDes.setServiceStatus(ServiceStatus.Active);
+			TransportToActOrDes.setServiceStatus(ServiceStatus.Activo);
 			prestacionRepository.save(TransportToActOrDes);
 			
 			Map<String, Boolean> response = new HashMap<>();
@@ -172,8 +179,8 @@ public class PrestacionController {
 	{
 		Care CareToActOrDes = prestacionRepository.findCareServiceByIdService(idService);
 		
-		if(CareToActOrDes.getServiceStatus() == ServiceStatus.Active) {
-			CareToActOrDes.setServiceStatus(ServiceStatus.Inactive);
+		if(CareToActOrDes.getServiceStatus() == ServiceStatus.Activo) {
+			CareToActOrDes.setServiceStatus(ServiceStatus.Inactivo);
 			prestacionRepository.save(CareToActOrDes);
 		
 			Map<String, Boolean> response = new HashMap<>();
@@ -181,7 +188,7 @@ public class PrestacionController {
 		
 			return response;
 		} else {
-			CareToActOrDes.setServiceStatus(ServiceStatus.Active);
+			CareToActOrDes.setServiceStatus(ServiceStatus.Activo);
 			prestacionRepository.save(CareToActOrDes);
 			
 			Map<String, Boolean> response = new HashMap<>();
@@ -279,7 +286,7 @@ public class PrestacionController {
 		
 			long idUsuario = transitDTO.UserDTO.Id;
 			Transit transit = TransitTransformer.ConvertTransitDTOToTransit(transitDTO);
-			transit.setServiceStatus(ServiceStatus.Active);
+			transit.setServiceStatus(ServiceStatus.Activo);
 		
 			SaveOrUpdateTransitService(idUsuario, transit);
 		
@@ -302,7 +309,7 @@ public class PrestacionController {
 		
 			long idUsuario = transportDTO.UserDTO.Id;
 			Transport transport = TransportTransformer.ConvertTransportDTOToTransport(transportDTO);
-			transport.setServiceStatus(ServiceStatus.Active);
+			transport.setServiceStatus(ServiceStatus.Activo);
 			
 			SaveOrUpdateTransportService(idUsuario, transport);
 		
@@ -325,7 +332,7 @@ public class PrestacionController {
 		
 			long idUsuario = careDTO.UserDTO.Id;
 			Care care = CareTransformer.ConvertCareDTOToCare(careDTO);
-			care.setServiceStatus(ServiceStatus.Active);
+			care.setServiceStatus(ServiceStatus.Activo);
 		
 			SaveOrUpdateCareService(idUsuario, care);
 		

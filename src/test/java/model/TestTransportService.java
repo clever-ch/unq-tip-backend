@@ -26,7 +26,7 @@ public class TestTransportService {
     @Test
     public void testTransportServiceHasServiceStatus(){
 
-        final ServiceStatus TRANSPORT_SERVICESTATUS = ServiceStatus.Active;
+        final ServiceStatus TRANSPORT_SERVICESTATUS = ServiceStatus.Activo;
 
         Transport aTransport = TransportFactory.createTransportServiceWithServiceStatus(TRANSPORT_SERVICESTATUS);
 
@@ -46,7 +46,7 @@ public class TestTransportService {
     @Test
     public void testTransportServiceHasUnidOfTime(){
 
-        final UnidOfTime TRANSPORT_UNIDOFTIME = UnidOfTime.Months;
+        final UnidOfTime TRANSPORT_UNIDOFTIME = UnidOfTime.Meses;
 
         Transport aTransport = TransportFactory.createTransportServiceWithUnidOfTime(TRANSPORT_UNIDOFTIME);
 

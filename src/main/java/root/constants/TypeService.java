@@ -1,7 +1,7 @@
 package root.constants;
 
 public enum TypeService {
-	Transit,
-	Transport,
-	Care
+	Transito,
+	Transporte,
+	Cuidado
 }

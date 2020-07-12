@@ -1,7 +1,7 @@
 package root.constants;
 
 public enum AnimalType {
-	BIRD,
-	CAT,
-	DOG
+	Ave,
+	Gato,
+	Perro
 }
