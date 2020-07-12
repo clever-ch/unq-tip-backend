@@ -22,7 +22,6 @@ import root.DTO.CareDTO;
 import root.DTO.TransitDTO;
 import root.DTO.TransportDTO;
 import root.model.Care;
-import root.model.Service;
 import root.constants.ServiceStatus;
 import root.model.Transit;
 import root.model.Transport;
@@ -30,7 +29,6 @@ import root.repository.PrestacionRepository;
 import root.transformers.CareTransformer;
 import root.transformers.TransitTransformer;
 import root.transformers.TransportTransformer;
-import root.controller.exceptions.AnimalInvalidException;
 import root.controller.exceptions.ServiceIncompleteException;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -123,8 +121,8 @@ public class PrestacionController {
 	{		
 		Transit transitToActOrDes = prestacionRepository.findTransitServiceByIdService(idService);
 		
-		if(transitToActOrDes.getServiceStatus() == ServiceStatus.Active) {
-			transitToActOrDes.setServiceStatus(ServiceStatus.Inactive);
+		if(transitToActOrDes.getServiceStatus() == ServiceStatus.Activo) {
+			transitToActOrDes.setServiceStatus(ServiceStatus.Inactivo);
 			prestacionRepository.save(transitToActOrDes);
 			
 			Map<String, Boolean> response = new HashMap<>();
@@ -132,7 +130,7 @@ public class PrestacionController {
 			
 			return response;
 		} else {
-			transitToActOrDes.setServiceStatus(ServiceStatus.Active);
+			transitToActOrDes.setServiceStatus(ServiceStatus.Activo);
 			prestacionRepository.save(transitToActOrDes);
 			
 			Map<String, Boolean> response = new HashMap<>();
@@ -148,8 +146,8 @@ public class PrestacionController {
 	{
 		Transport TransportToActOrDes = prestacionRepository.findTransportServiceByIdService(idService);
 		
-		if(TransportToActOrDes.getServiceStatus() == ServiceStatus.Active) {
-			TransportToActOrDes.setServiceStatus(ServiceStatus.Inactive);
+		if(TransportToActOrDes.getServiceStatus() == ServiceStatus.Activo) {
+			TransportToActOrDes.setServiceStatus(ServiceStatus.Inactivo);
 			prestacionRepository.save(TransportToActOrDes);
 		
 			Map<String, Boolean> response = new HashMap<>();
@@ -157,7 +155,7 @@ public class PrestacionController {
 		
 			return response;
 		} else {
-			TransportToActOrDes.setServiceStatus(ServiceStatus.Active);
+			TransportToActOrDes.setServiceStatus(ServiceStatus.Activo);
 			prestacionRepository.save(TransportToActOrDes);
 			
 			Map<String, Boolean> response = new HashMap<>();
@@ -172,8 +170,8 @@ public class PrestacionController {
 	{
 		Care CareToActOrDes = prestacionRepository.findCareServiceByIdService(idService);
 		
-		if(CareToActOrDes.getServiceStatus() == ServiceStatus.Active) {
-			CareToActOrDes.setServiceStatus(ServiceStatus.Inactive);
+		if(CareToActOrDes.getServiceStatus() == ServiceStatus.Activo) {
+			CareToActOrDes.setServiceStatus(ServiceStatus.Inactivo);
 			prestacionRepository.save(CareToActOrDes);
 		
 			Map<String, Boolean> response = new HashMap<>();
@@ -181,7 +179,7 @@ public class PrestacionController {
 		
 			return response;
 		} else {
-			CareToActOrDes.setServiceStatus(ServiceStatus.Active);
+			CareToActOrDes.setServiceStatus(ServiceStatus.Activo);
 			prestacionRepository.save(CareToActOrDes);
 			
 			Map<String, Boolean> response = new HashMap<>();
@@ -279,7 +277,7 @@ public class PrestacionController {
 		
 			long idUsuario = transitDTO.UserDTO.Id;
 			Transit transit = TransitTransformer.ConvertTransitDTOToTransit(transitDTO);
-			transit.setServiceStatus(ServiceStatus.Active);
+			transit.setServiceStatus(ServiceStatus.Activo);
 		
 			SaveOrUpdateTransitService(idUsuario, transit);
 		
@@ -302,7 +300,7 @@ public class PrestacionController {
 		
 			long idUsuario = transportDTO.UserDTO.Id;
 			Transport transport = TransportTransformer.ConvertTransportDTOToTransport(transportDTO);
-			transport.setServiceStatus(ServiceStatus.Active);
+			transport.setServiceStatus(ServiceStatus.Activo);
 			
 			SaveOrUpdateTransportService(idUsuario, transport);
 		
@@ -325,7 +323,7 @@ public class PrestacionController {
 		
 			long idUsuario = careDTO.UserDTO.Id;
 			Care care = CareTransformer.ConvertCareDTOToCare(careDTO);
-			care.setServiceStatus(ServiceStatus.Active);
+			care.setServiceStatus(ServiceStatus.Activo);
 		
 			SaveOrUpdateCareService(idUsuario, care);
 		

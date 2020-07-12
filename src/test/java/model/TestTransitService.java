@@ -25,7 +25,7 @@ public class TestTransitService {
     @Test
     public void testTransitServiceHasServiceStatus(){
 
-        final ServiceStatus TRANSIT_SERVICESTATUS = ServiceStatus.Active;
+        final ServiceStatus TRANSIT_SERVICESTATUS = ServiceStatus.Activo;
 
         Transit aTransit = TransitFactory.createTransitServiceWithServiceStatus(TRANSIT_SERVICESTATUS);
 
@@ -45,7 +45,7 @@ public class TestTransitService {
     @Test
     public void testTransitServiceHasUnidOfTime(){
 
-        final UnidOfTime TRANSIT_UNIDOFTIME = UnidOfTime.Months;
+        final UnidOfTime TRANSIT_UNIDOFTIME = UnidOfTime.Meses;
 
         Transit aTransit = TransitFactory.createTransitServiceWithUnidOfTime(TRANSIT_UNIDOFTIME);
 

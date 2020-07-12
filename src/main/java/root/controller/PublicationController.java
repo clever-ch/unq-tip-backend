@@ -82,7 +82,7 @@ public class PublicationController {
 			
 			long idUsuario = publicationDTO.UserDTO.Id;
 			Publication publication = PublicationTransformer.ConvertPublicationDTOToPublication(publicationDTO);
-			publication.setPublicationStatus(PublicationStatus.ACTIVE);
+			publication.setPublicationStatus(PublicationStatus.Activo);
 			
 			SaveOrUpdatePublication(idUsuario, publication);
 			

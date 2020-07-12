@@ -72,7 +72,7 @@ public class PublicationFactory {
 
     public static Publication createFullPublicationWithType(PublicationType type) {
     	
-    	Animal animal = AnimalFactory.createCompleteAnimal(AnimalType.BIRD, "", "", "", "");
+    	Animal animal = AnimalFactory.createCompleteAnimal(AnimalType.Ave, "", "", "", "");
     	Person person = PersonFactory.createPersonComplete("", "", "", "", "");
     	User user = UserFactory.createACompleteUser("", "", "", person);
 
