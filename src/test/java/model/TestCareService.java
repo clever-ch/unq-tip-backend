@@ -26,7 +26,7 @@ public class TestCareService {
     @Test
     public void testCareServiceHasServiceStatus(){
 
-        final ServiceStatus CARE_SERVICESTATUS = ServiceStatus.Active;
+        final ServiceStatus CARE_SERVICESTATUS = ServiceStatus.Activo;
 
         Care aCare = CareFactory.createCareServiceWithServiceStatus(CARE_SERVICESTATUS);
 
@@ -47,7 +47,7 @@ public class TestCareService {
     @Test
     public void testCareServiceHasUnidOfTime(){
 
-        final UnidOfTime CARE_UNIDOFTIME = UnidOfTime.Months;
+        final UnidOfTime CARE_UNIDOFTIME = UnidOfTime.Meses;
 
         Care aCare = CareFactory.createCareServiceWithUnidOfTime(CARE_UNIDOFTIME);
 
