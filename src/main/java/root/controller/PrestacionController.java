@@ -30,6 +30,7 @@ import root.transformers.CareTransformer;
 import root.transformers.TransitTransformer;
 import root.transformers.TransportTransformer;
 import root.controller.exceptions.ServiceIncompleteException;
+import root.controller.exceptions.WithoutServicesException;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -83,11 +84,13 @@ public class PrestacionController {
 		List<Care> cares = prestacionRepository.findAllCareServicesByIdUser(idUser);
 		List<CareDTO> caresDTO = new ArrayList<CareDTO>();
 		
-		for (Care care : cares) {
-			caresDTO.add(CareTransformer.ConvertCareToCareDTO(care));
-		}
+		if(cares.size() != 0) {
+				for (Care care : cares) {
+				caresDTO.add(CareTransformer.ConvertCareToCareDTO(care));
+				}
 		
-		return caresDTO;
+				return caresDTO;
+		} else throw new WithoutServicesException("No hay registro de servicios de cuidado");
 	}
 	
 	@GetMapping("/allUserTransitServices/{id}")
@@ -96,11 +99,13 @@ public class PrestacionController {
 		List<Transit> listOfTransit = prestacionRepository.findAllTransitServicesByIdUser(idUser);
 		List<TransitDTO> listOfTransitDTO = new ArrayList<TransitDTO>();
 		
-		for (Transit transit : listOfTransit) {
-			listOfTransitDTO.add(TransitTransformer.ConvertTransitToTransitDTO(transit));
-		}
+		if(listOfTransit.size() != 0) {
+				for (Transit transit : listOfTransit) {
+				listOfTransitDTO.add(TransitTransformer.ConvertTransitToTransitDTO(transit));
+				}
 		
-		return listOfTransitDTO;
+				return listOfTransitDTO;
+		} else throw new WithoutServicesException("No hay registro de servicios de transito");
 	}
 	
 	@GetMapping("/allUserTransportServices/{id}")
@@ -109,11 +114,13 @@ public class PrestacionController {
 		List<Transport> transports = prestacionRepository.findAllTransportServicesByIdUser(idUser);
 		List<TransportDTO> transportsDTO = new ArrayList<TransportDTO>();
 		
-		for (Transport transport : transports) {
+		if(transports.size() != 0) {
+			for (Transport transport : transports) {
 			transportsDTO.add(TransportTransformer.ConvertTransportToTransportDTO(transport));
-		}
-		
-		return transportsDTO;
+			}
+			
+			return transportsDTO;
+		} else throw new WithoutServicesException("No hay registro de servicios de transporte");
 	}
 	
 	@DeleteMapping("/deleteTransitService/{id}")
